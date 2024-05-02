@@ -1,3 +1,103 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.main-container{
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.ourvision-bg{
+  background-image: url("../assets/images/about/bg-cerver.svg");
+}
+
+ @keyframes slide {
+   0% {
+     width: 0%;
+     left: 0%;
+   }
+
+   100% {
+     width: 100%;
+     left: 0%;
+   }
+ }
+
+ .animate-horizontalLine-show {
+   animation: slide 5s forwards;
+ }
+
+ @keyframes line-show {
+   0% {
+     height: 0;
+   }
+
+   100% {
+     height: 100%;
+   }
+ }
+
+ .animate-verticalLine-show {
+   animation: line-show 4s ease-out forwards;
+ }
+
+ @keyframes animation-fadeInLeft {
+   from {
+     opacity: 0;
+     transform: translateX(-90px);
+   }
+
+   to {
+     opacity: 1;
+     transform: translateX(0);
+   }
+ }
+
+ .animation-fadeInLeft {
+   animation-name: animation-fadeInLeft;
+   animation-duration: 2s;
+   animation-fill-mode: forwards;
+ }
+
+ @keyframes animation-fadeInRight {
+   from {
+     opacity: 0;
+     transform: translateX(90px);
+   }
+
+   to {
+     opacity: 1;
+     transform: translateX(0);
+   }
+ }
+
+ .animation-fadeInRight {
+   animation-name: animation-fadeInRight;
+   animation-duration: 2s;
+   animation-fill-mode: forwards;
+ }
+
+ @keyframes animation-zoomIn {
+   from {
+     opacity: 0;
+     transform: scale(0.5);
+   }
+
+   to {
+     opacity: 1;
+     transform: scale(1);
+   }
+ }
+
+ .animation-zoomIn {
+   animation-name: animation-zoomIn;
+   animation-duration: 2s;
+   animation-fill-mode: forwards;
+ }
