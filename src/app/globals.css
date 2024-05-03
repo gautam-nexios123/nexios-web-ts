@@ -31,7 +31,7 @@
  }
 
  .animate-horizontalLine-show {
-   animation: slide 5s forwards;
+   animation: slide 2s forwards;
  }
 
  @keyframes line-show {
@@ -45,7 +45,7 @@
  }
 
  .animate-verticalLine-show {
-   animation: line-show 4s ease-out forwards;
+   animation: line-show 2s ease-out forwards;
  }
 
  @keyframes animation-fadeInLeft {
