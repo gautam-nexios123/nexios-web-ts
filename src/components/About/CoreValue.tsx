@@ -38,19 +38,19 @@ const CoreValue = () => {
   ];
 
   return (
-    <div className="main-container px-[40px] my-10 w-full relative">
+    <div className="main-container px-[40px] my-[100px] w-full relative">
       <AnimationOnScroll id="ourcore-value" setIsVisible={setIsVisible}>
         <div
           className={`${
             isVisible ? "animation-zoomIn" : ""
-          } relative font-MuseoSans font-semibold text-[#121212] text-[32px] sm:text-[48px] text-center`}
+          } relative font-MuseoSans font-semibold text-[#121212] text-[32px] sm:text-[48px] text-center pb-[15px]`}
         >
           Our Core Values
           <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[250px] sm:w-[380px] mx-auto mt-[-16px] sm:mt-[-24px]"></div>
         </div>
       </AnimationOnScroll>
 
-      <div className="w-full flex flex-wrap flex-col md:flex-row justify-between gap-5 mt-12">
+      <div className="w-full flex flex-wrap flex-col md:flex-row justify-between gap-5 my-12">
         {cardData?.map((item, index) => (
           <div
             key={index}

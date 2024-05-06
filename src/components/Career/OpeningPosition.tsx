@@ -35,7 +35,7 @@ const OpeningPosition = () => {
   }, []);
 
   return (
-    <div className="w-full mb-[80px]">
+    <div className="w-full my-[80px]">
       <AnimationOnScroll id="opening-position" setIsVisible={setIsVisible}>
         <div
           className={`${

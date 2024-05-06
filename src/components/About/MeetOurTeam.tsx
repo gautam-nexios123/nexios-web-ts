@@ -36,7 +36,9 @@ interface TeamMember {
 
 const MeetOurTeam = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [isHoveredID, setIsHoveredID] = useState<number | undefined | string>(undefined);
+  const [isHoveredID, setIsHoveredID] = useState<number | undefined | string>(
+    undefined
+  );
   const [isVisible, setIsVisible] = useState(false);
 
   const [teamData, setTeamData] = useState<TeamMember[]>([]);
@@ -65,19 +67,18 @@ const MeetOurTeam = () => {
   }, []);
 
   return (
-    <div className="main-container px-[40px] mb-12">
-      <AnimationOnScroll id="meet-team" setIsVisible={setIsVisible}>
-        <div
-          className={`${
-            isVisible ? "animation-zoomIn" : ""
-          } relative font-MuseoSans font-semibold text-[#121212] text-[32px] sm:text-[48px] text-center`}
-        >
-          Meet Our Team
-          <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[240px] sm:w-[350px] mx-auto mt-[-16px] sm:mt-[-24px]"></div>
-        </div>
-      </AnimationOnScroll>
-
-      <div className="">
+    <div className="w-full px-[40px]">
+      <div className="main-container mb-12">
+        <AnimationOnScroll id="meet-team" setIsVisible={setIsVisible}>
+          <div
+            className={`${
+              isVisible ? "animation-zoomIn" : ""
+            } relative font-MuseoSans font-semibold text-[#121212] text-[32px] sm:text-[48px] text-center pb-[15px]`}
+          >
+            Meet Our Team
+            <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[240px] sm:w-[350px] mx-auto mt-[-16px] sm:mt-[-24px]"></div>
+          </div>
+        </AnimationOnScroll>
         <div className="text-[#9BA9B4] font-normal text-[20px] text-justify lg:text-center py-5">
           At nexios, we believe in the spirit of teamwork, creativity, and
           innovation to accomplish tasks quickly, seamlessly, and effectively.
@@ -94,8 +95,7 @@ const MeetOurTeam = () => {
           that encourages growth, creativity, collaboration, and better service.
         </div>
       </div>
-
-      <div className="mt-11 mx-auto">
+      <div className="w-full lg:w-[80%] my-11 mx-auto">
         {loading ? (
           <div className="text-center">
             <CircularProgress style={{ color: "#399EFD" }} size={35} />
@@ -114,7 +114,7 @@ const MeetOurTeam = () => {
             {teamData?.map((item, index) => (
               <div key={index} className="mb-8 w-full">
                 <div
-                  className="relative cursor-pointer h-[340px] sm:mx-[12px]"
+                  className="relative cursor-pointer h-[380px] sm:mx-[12px]"
                   onMouseEnter={() => {
                     setIsHovered(true);
                     setIsHoveredID(index);

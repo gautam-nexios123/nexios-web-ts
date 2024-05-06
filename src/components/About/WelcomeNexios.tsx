@@ -12,13 +12,13 @@ const WelcomeNexios = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
-    <div className="my-11 w-full relative">
+    <div className="my-[60px] w-full relative">
       <div className="main-container px-[40px]">
         <AnimationOnScroll id="wel-nexios" setIsVisible={setIsVisible}>
           <h1
             className={`${
               isVisible ? "animation-zoomIn" : ""
-            } relative font-MuseoSans font-light text-[#121212] text-[32px] sm:text-[48px] text-center`}
+            } relative font-MuseoSans font-light text-[#121212] text-[32px] sm:text-[48px] text-center pb-[40px]`}
           >
             Welcome To <span className="font-semibold">nexios</span>
             <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[280px] sm:w-[420px] mx-auto mt-[-16px] sm:mt-[-24px]"></div>
@@ -26,7 +26,7 @@ const WelcomeNexios = () => {
         </AnimationOnScroll>
 
         <div className="">
-          <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[19px] md:text-center text-justify py-7">
+          <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[19px] md:text-center text-justify">
             Nexios Technologies is one of the reckoned Software Development
             Company in Surat. Rapidly changing business state of affairs and
             latest technologies being introduced day by day, always raises the
@@ -36,13 +36,13 @@ const WelcomeNexios = () => {
             software. Our teams have 3 years of experience in the development of
             Software Applications & Systems.
           </div>
-          <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[19px] md:text-center text-justify pb-7">
+          <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[19px] md:text-center text-justify py-[20px]">
             We have command over the Platforms of Android Development, Angular,
             .Net, PHP, SQL Server, Photoshop, Microsoft Office (Access, Excel,
             and PowerPoint). We also excel in mobile technology and cater to
             your need to develop classy iPad and iPhone application.
           </div>
-          <div className="font-MuseoSans font-semibold text-[#399EFD] text-[28px] sm:text-[32px] text-center pb-7">
+          <div className="font-MuseoSans font-semibold text-[#399EFD] text-[28px] sm:text-[32px] text-center pb-[20px]">
             We Provide IT Solutions That Help You Succeed
           </div>
         </div>
