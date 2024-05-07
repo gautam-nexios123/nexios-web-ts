@@ -3,13 +3,13 @@
 import "./globals.css";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
-import ReactGA from "react-ga";
+// import { useEffect } from "react";
+// import ReactGA from "react-ga";
 import { pathDescriptions } from "@/utils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-ReactGA.initialize("G-YESDGWM45W");
+// ReactGA.initialize("G-YESDGWM45W");
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -30,9 +30,9 @@ export default function RootLayout({
     .replace(/-/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase());
 
-  useEffect(() => {
-    ReactGA.pageview(pathName + window.location.search);
-  }, [pathName]);
+  // useEffect(() => {
+  //   ReactGA.pageview(pathName + window.location.search);
+  // }, [pathName]);
 
   return (
     <html lang="en">
@@ -43,13 +43,13 @@ export default function RootLayout({
             : `${appTitle} - Nexios Technologies`
         }`}</title>
         <meta name="description" content={description} />
-        <meta
+        {/* <meta
           name="google-site-verification"
           content="2RotKNz-4bf_xmgnkcyTQgZoNy-_g5TL6-pfXo_vBgI"
         />
-        <meta name="robots" content="noindex,nofollow" />
+        <meta name="robots" content="noindex,nofollow" /> */}
         <link rel="icon" href="/icon.png" sizes="32*32" />
-        <Script
+        {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-YESDGWM45W"
         ></Script>
@@ -61,7 +61,7 @@ export default function RootLayout({
 
           gtag('config', 'G-YESDGWM45W');
             `}
-        </Script>
+        </Script> */}
       </head>
       <body>
         <Header />
