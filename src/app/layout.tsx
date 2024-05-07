@@ -21,7 +21,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const pathName = usePathname();
   const description = pathDescriptions[pathName] || "Nexios Technologies LLP";
 
@@ -43,11 +42,11 @@ export default function RootLayout({
             : `${appTitle} - Nexios Technologies`
         }`}</title>
         <meta name="description" content={description} />
-        {/* <meta
+        <meta
           name="google-site-verification"
           content="2RotKNz-4bf_xmgnkcyTQgZoNy-_g5TL6-pfXo_vBgI"
         />
-        <meta name="robots" content="noindex,nofollow" /> */}
+        <meta name="robots" content="noindex,nofollow" />
         <link rel="icon" href="/icon.png" sizes="32*32" />
         {/* <Script
           async
