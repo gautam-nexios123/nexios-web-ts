@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "sitemap": "next-sitemap --config next-sitemap-config.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -15,6 +16,7 @@
     "@mui/material": "^5.15.16",
     "axios": "^1.6.8",
     "next": "14.2.3",
+    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-ga": "^3.3.1",

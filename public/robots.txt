@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nexios-web-ts.vercel.app
+
+# Sitemaps
+Sitemap: https://nexios-web-ts.vercel.app/sitemap.xml
