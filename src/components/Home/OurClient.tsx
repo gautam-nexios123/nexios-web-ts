@@ -5,7 +5,7 @@ import quateIcon from "../../assets/images/home/quateIcon.svg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { AnimationOnScroll } from "../Animations";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import axios from "axios";
@@ -44,22 +44,25 @@ const OurClient = () => {
   const [clientData, setClientData] = useState<ClientData[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
+  const apiCalled = useRef<boolean>(false); // Ref to track if API has been called
+
   const handleGetClient = async () => {
+    if (apiCalled.current) return; // Prevent duplicate calls
+    apiCalled.current = true; // Mark as called
+
     setLoading(true);
-    await axios
-      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/our_client`)
-      .then((res) => {
-        if (res?.data?.statusCode === 200) {
-          setLoading(false);
-          setClientData(res?.data?.data);
-        } else {
-          toast.error(res?.data?.message);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+    try {
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASEURL}/our_client`);
+      if (res?.data?.statusCode === 200) {
+        setClientData(res?.data?.data);
+      } else {
+        toast.error(res?.data?.message);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {

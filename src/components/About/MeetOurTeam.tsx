@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { CustomDot } from "@/utils";
@@ -43,8 +43,12 @@ const MeetOurTeam = () => {
 
   const [teamData, setTeamData] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const apiCalled = useRef<boolean>(false); // Ref to track if API has been called
 
   const handleGetClient = async () => {
+    if (apiCalled.current) return; // Prevent duplicate calls
+    apiCalled.current = true;
+
     setLoading(true);
     await axios
       .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/our_team`)

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { CircularProgress, Skeleton } from "@mui/material";
 import axios from "axios";
@@ -21,6 +21,7 @@ interface ServicesContentProps {
 const Services = () => {
   const [servicesData, setServicesData] = useState<ServiceDataProps[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const apiCalled = useRef<boolean>(false); // Ref to track if API has been called
 
   const [loadedImages, setLoadedImages] = useState<any>(
     Array(servicesData?.length).fill(false)
@@ -35,6 +36,9 @@ const Services = () => {
   };
 
   const handleGetServicesData = async () => {
+    if (apiCalled.current) return; // Prevent duplicate calls
+    apiCalled.current = true;
+    
     setLoading(true);
     await axios
       .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio`)

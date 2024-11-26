@@ -1,7 +1,7 @@
 "use client";
 import CustomButton from "@/common/CustomButton";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AnimationOnScroll } from "../Animations";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,8 +11,12 @@ const OpeningPosition = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [positionData, setPositionData] = useState([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const apiCalled = useRef<boolean>(false); // Ref to track if API has been called
 
   const handleGetPositionData = async () => {
+    if (apiCalled.current) return; // Prevent duplicate calls
+    apiCalled.current = true;
+    
     setLoading(true);
     await axios
       .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/open_position`)
