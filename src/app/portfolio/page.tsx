@@ -20,7 +20,7 @@ const Portfolio = () => {
           <div className="font-MuseoSans text-[36px] sm:text-[46px] text-[#121212] font-semibold pb-3 md:pb-0">
             Our,Successful client products
           </div>
-          <div className="font-MuseoSans text-[16px] sm:text-[19px] text-[#9BA9B4] font-normal text-justify">
+          <div className="font-MuseoSans text-[16px] sm:text-[19px] text-[#9BA9B4] font-light text-justify">
             nexios Technologies is one of the reckoned Software Development
             Company in Surat. Rapidly changing business state of affairs and
             latest technologies being introduced day by day, always raises the

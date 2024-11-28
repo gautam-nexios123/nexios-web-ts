@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="flex flex-wrap lg:flex-nowrap gap-[40px] lg:gap-[60px] py-12">
           <div className="">
             <Image src={logo} alt="logo" className="w-[180px] h-[44px] mb-4" />
-            <div className="font-MuseoSans text-justify font-normal text-[16px] leading-[30px] text-[#9BA9B4] mb-10 lg:w-[80%]">
+            <div className="font-MuseoSans text-justify font-light text-[18px] leading-[30px] text-[#9BA9B4] mb-10 lg:w-[80%]">
               nexios allows businesses to narrow the technology gap in their
               organization and get a competitive edge through innovative
               software development solutions tailored to their goals.
@@ -47,7 +47,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="">
-            <div className="text-white font-MuseoSans font-semibold text-[18px] pb-4">
+            <div className="text-white font-MuseoSans font-medium text-[17px] pb-4">
               Company
             </div>
             <NavItem path={"/"}>Home</NavItem>
@@ -57,7 +57,7 @@ const Footer = () => {
             <NavItem path={"/contact-us"}>Contact Us</NavItem>
           </div>
           <div className="">
-            <div className="text-white font-MuseoSans font-semibold text-[18px] pb-4">
+            <div className="text-white font-MuseoSans font-medium text-[17px] pb-4">
               Services
             </div>
             <NavItem path={"/mobile-app-development"}>
@@ -69,19 +69,19 @@ const Footer = () => {
             <NavItem path={"/qa"}>Quality Assurance</NavItem>
           </div>
           <div className="">
-            <div className="text-white font-MuseoSans font-semibold text-[18px] pb-4">
+            <div className="text-white font-MuseoSans font-medium text-[17px] pb-4">
               Get In Touch
             </div>
-            <div className="font-MuseoSans flex items-start gap-2 font-normal text-[16px] text-[#9BA9B4] pb-4">
+            <div className="font-MuseoSans flex items-start gap-2 font-light text-[17px] text-[#9BA9B4] pb-4">
               <Image src={locationImg} alt="location" className="mt-1" />
               707, Silver Trade Center, near Oxygen Park, Digital Valley
               (Uttran), Surat, Gujarat 394105
             </div>
-            <div className="font-MuseoSans flex items-center hover:text-[#399EFD] cursor-pointer gap-2 font-normal text-[16px] text-[#9BA9B4] pb-4">
+            <div className="font-MuseoSans flex items-center hover:text-[#399EFD] cursor-pointer gap-2 font-light text-[16px] text-[#9BA9B4] pb-4">
               <Image src={phoneImg} alt="phoneImg" />
               <a href="tel:+918866856039">+91 88668 56039</a>
             </div>
-            <div className="font-MuseoSans hover:text-[#399EFD] cursor-pointer flex items-center gap-2 font-normal text-[16px] text-[#9BA9B4]">
+            <div className="font-MuseoSans hover:text-[#399EFD] cursor-pointer flex items-center gap-2 font-light text-[16px] text-[#9BA9B4]">
               <Image src={mailImg} alt="mailImg" />
               <a href="mailto:info@nexios.in">info@nexios.in</a>
             </div>
@@ -89,7 +89,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full h-[1px] bg-[#9BA9B4]"></div>
-      <div className="text-[#9BA9B4] font-MuseoSans font-normal text-[14px] text-center py-4">
+      <div className="text-[#9BA9B4] font-MuseoSans font-light text-[14px] text-center py-4">
         ©2024 nexios technologies, | All right reserved Terms of Services |
         Privacy Policy
       </div>
@@ -110,7 +110,7 @@ const NavItem: React.FC<NavItemProps> = ({ path, children }) => {
   return (
     <div
       onClick={() => router.push(path)}
-      className="font-MuseoSans whitespace-nowrap font-normal text-[16px] hover:text-[#399EFD] cursor-pointer text-[#9BA9B4] pb-3"
+      className="font-MuseoSans whitespace-nowrap font-light text-[18px] hover:text-[#399EFD] cursor-pointer text-[#9BA9B4] pb-3"
     >
       {children}
     </div>

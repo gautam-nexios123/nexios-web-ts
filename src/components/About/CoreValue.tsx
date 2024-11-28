@@ -50,11 +50,11 @@ const CoreValue = () => {
         </div>
       </AnimationOnScroll>
 
-      <div className="w-full flex flex-wrap flex-col md:flex-row justify-between gap-5 my-12">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 justify-between gap-5 my-12">
         {cardData?.map((item, index) => (
           <div
             key={index}
-            className="bg-white shadow-3xl flex flex-col xl:flex-row gap-6 w-full md:w-[48%] p-6 rounded-2xl"
+            className="bg-white shadow-3xl flex flex-col xl:flex-row gap-6 w-full  p-6 rounded-2xl"
           >
             <Image
               src={item?.image}
@@ -65,7 +65,7 @@ const CoreValue = () => {
               <div className="font-MuseoSans font-semibold text-center md:text-start text-[28px] text-black pb-2">
                 {item?.title}
               </div>
-              <div className="font-MuseoSans font-normal text-[16px] text-[#9BA9B4] text-justify">
+              <div className="font-MuseoSans font-light text-[16px] text-[#9BA9B4] text-justify">
                 {item?.description}
               </div>
             </div>

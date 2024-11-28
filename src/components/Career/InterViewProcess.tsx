@@ -35,14 +35,14 @@ const InterViewProcess = () => {
           <div
             className={`${
               isVisible ? "animation-zoomIn" : ""
-            } font-MuseoSans font-normal text-[22px] sm:text-[32px] text-[#121212] pb-5 text-center`}
+            } font-MuseoSans font-light text-[22px] sm:text-[32px] text-[#121212] pb-5 text-center`}
           >
-            Process of <span className="font-semibold">Interview</span>
+            Process of <span className="font-bold">Interview</span>
             <div className="bg-[#399EFD] opacity-[25%] h-[6px] w-[210px] sm:w-[300px] mt-[-12px] sm:mt-[-15px] mx-auto"></div>
           </div>
         </AnimationOnScroll>
 
-        <div className="font-MuseoSans font-normal text-[16px] sm:text-[18px] text-[#9BA9B4] text-justify md:text-center">
+        <div className="font-MuseoSans font-light text-[16px] sm:text-[18px] text-[#9BA9B4] text-justify md:text-center">
           We are one of the best places to work. nexios makes an atmosphere
           where you can grow your inner self and outer self, show your talent
           It’s a perfect combination between you and nexios when the career and

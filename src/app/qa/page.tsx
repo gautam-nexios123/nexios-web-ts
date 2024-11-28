@@ -14,7 +14,7 @@ const QA = () => {
       />
       <div className="main-container px-[40px]">
         <div className="w-full mt-16">
-          <div className="font-MuseoSans font-normal text-[20px] text-[#9BA9B4] text-justify md:text-center">
+          <div className="font-MuseoSans font-light text-[20px] text-[#9BA9B4] text-justify md:text-center">
             Quality assurance is a critical part of the software development
             process. It’s important to ensure that the software you’re
             developing is of the highest quality and that it meets all the
@@ -37,10 +37,10 @@ const QA = () => {
               <div className="font-MuseoSans text-[#121212] font-semibold text-[28px] sm:text-[32px] pb-3">
                 What We Provides
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-4">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-4">
                 The benefits of using QA software include:
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-6">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-6">
                 <ul className="list-disc pl-10">
                   <li>Reduced testing time and costs</li>
                   <li>Increased accuracy and reliability</li>
@@ -48,7 +48,7 @@ const QA = () => {
                   <li>Reduced risk of errors</li>
                 </ul>
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 In order to ensure that the products and services that are
                 delivered to customers are of the highest quality, businesses
                 must use QA software. It’s an essential part of ensuring

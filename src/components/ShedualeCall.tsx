@@ -102,11 +102,11 @@ const ShedualeCall = () => {
               name="name"
               value={formData.name}
               placeholder="Name*"
-              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[20px] border-b outline-none placeholder-white p-2"
+              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[16px] font-light border-b outline-none placeholder-white p-2"
               onChange={(e) => handleOnChange(e)}
             />
             {error?.name && (
-              <div className="font-MuseoSans font-normal text-red-600 text-[18px]">
+              <div className="font-MuseoSans font-light text-red-600 text-[18px]">
                 {error?.name}
               </div>
             )}
@@ -117,12 +117,12 @@ const ShedualeCall = () => {
               name="email"
               value={formData.email}
               placeholder="Work Email"
-              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[20px] border-b outline-none placeholder-white p-2"
+              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[16px] font-light border-b outline-none placeholder-white p-2"
               onChange={(e) => handleOnChange(e)}
               required
             />
             {error?.email && (
-              <div className="font-MuseoSans font-normal text-red-600 text-[18px]">
+              <div className="font-MuseoSans font-light text-red-600 text-[18px]">
                 {error?.email}
               </div>
             )}
@@ -133,23 +133,30 @@ const ShedualeCall = () => {
               name="phone"
               value={formData.phone}
               placeholder="Phone"
-              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[20px] border-b outline-none placeholder-white p-2"
+              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[16px] font-light border-b outline-none placeholder-white p-2"
               onChange={(e) => handleOnChange(e)}
             />
             {error?.phone && (
-              <div className="font-MuseoSans font-normal text-red-600 text-[18px]">
+              <div className="font-MuseoSans font-light text-red-600 text-[18px]">
                 {error?.phone}
               </div>
             )}
           </div>
-          <div className="mb-8">
-            <input
+          <div className="mb-2">
+            {/* <input
               type="text"
               name="brief"
               value={formData.brief}
               placeholder="Share your requirements in brief"
-              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[20px] border-b outline-none placeholder-white p-2"
+              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[16px] font-light border-b outline-none placeholder-white p-2"
               onChange={(e) => handleOnChange(e)}
+            /> */}
+            <textarea
+              name="brief"
+              value={formData.brief}
+              placeholder="Share your requirements in brief"
+              className="bg-transparent w-[80%] lg:w-[65%] text-white text-[16px] font-light border-b outline-none placeholder-white p-2"
+              onChange={(e :any) => handleOnChange(e)}
             />
           </div>
           <div className="pt-4 pb-11">
@@ -158,7 +165,7 @@ const ShedualeCall = () => {
               bgColor="#FFFF"
               textColor="#399EFD"
               btnWidth="120px"
-              text="Submit"
+              text="SUBMIT"
               process={loading}
             />
           </div>

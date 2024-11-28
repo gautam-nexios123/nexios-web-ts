@@ -44,9 +44,9 @@ const OpeningPosition = () => {
         <div
           className={`${
             isVisible ? "animation-zoomIn" : ""
-          } font-MuseoSans font-normal text-[22px] sm:text-[32px] text-[#121212] pb-4 text-center`}
+          } font-MuseoSans font-light text-[22px] sm:text-[32px] text-[#121212] pb-4 text-center`}
         >
-          Opening <span className="font-semibold">Position</span>
+          Opening <span className="font-bold">Position</span>
           <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[180px] mx-auto sm:w-[260px] mt-[-12px] sm:mt-[-15px]"></div>
         </div>
       </AnimationOnScroll>
@@ -96,28 +96,28 @@ const PositonCard: React.FC<PositionCardProps> = ({ item, index }) => {
       <div
         className={`text-center ${
           index % 2 !== 0 ? "text-white" : "text-[#9BA9B4]"
-        } font-MuseoSans font-normal text-[22px]`}
+        } font-MuseoSans font-light text-[22px]`}
       >
         Openings Position
       </div>
       <div
         className={`text-center ${
           index % 2 !== 0 ? "text-white" : "text-[#121212]"
-        } font-MuseoSans font-normal text-[30px] pb-3`}
+        } font-MuseoSans font-light text-[30px] pb-3`}
       >
         {item?.vacancy}
       </div>
       <div
         className={`text-center ${
           index % 2 !== 0 ? "text-white" : "text-[#9BA9B4]"
-        } font-MuseoSans font-normal text-[22px]`}
+        } font-MuseoSans font-light text-[22px]`}
       >
         Experience in Year
       </div>
       <div
         className={`text-center ${
           index % 2 !== 0 ? "text-white" : "text-[#121212]"
-        } font-MuseoSans font-normal text-[30px] pb-3`}
+        } font-MuseoSans font-light text-[30px] pb-3`}
       >
         {item?.experiance_year}
       </div>

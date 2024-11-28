@@ -29,7 +29,7 @@ const Technology = () => {
             isVisible ? "animation-zoomIn" : ""
           } w-full text-center font-MuseoSans font-light text-[22px] sm:text-[32px]`}
         >
-          We Use <span className="font-semibold">Technologies</span>
+          We Use <span className="font-bold">Technologies</span>
           <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[220px] sm:w-[325px] mx-auto mt-[-12px] sm:mt-[-15px]"></div>
         </div>
       </AnimationOnScroll>

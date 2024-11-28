@@ -29,7 +29,7 @@ const ServiceTopMainContent: React.FC<ServiceProps> = ({
                 {text}
               </h1>
               <p
-                className={`font-MuseoSans font-normal text-[19px] text-[#9BA9B4] text-justify`}
+                className={`font-MuseoSans font-light text-[19px] text-[#9BA9B4] text-justify`}
               >
                 {description}
               </p>

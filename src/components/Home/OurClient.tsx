@@ -163,13 +163,13 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ item }) => {
       </div>
       <div className="w-full lg:w-[70%]">
         <Image src={quateIcon} alt="quate" width={45} height={45} />
-        <div className="text-[#121212] mb-2 text-justify font-MuseoSans font-normal text-[21px] py-6 italic">
+        <div className="text-[#121212] mb-2 text-justify font-MuseoSans font-medium text-[21px] py-6 italic">
           {item?.description}
         </div>
-        <div className="text-[#121212] font-MuseoSans font-semibold text-lg pb-2 italic">
+        <div className="text-[#121212] font-MuseoSans font-semibold text-[16px] pb-2 italic">
           {item?.name}
         </div>
-        <div className="text-[#9BA9B4] font-MuseoSans font-normal text-lg pb-2 italic">
+        <div className="text-[#9BA9B4] font-MuseoSans font-light text-[16px] pb-2 italic">
           {item?.designation}
         </div>
       </div>

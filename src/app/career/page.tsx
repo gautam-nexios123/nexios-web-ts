@@ -22,14 +22,14 @@ const Career = () => {
             <div
               className={`${
                 isVisible ? "animation-zoomIn" : ""
-              } font-MuseoSans font-normal text-[22px] sm:text-[32px] text-[#121212] pb-4 text-center`}
+              } font-MuseoSans font-light text-[22px] sm:text-[32px] text-[#121212] pb-4 text-center`}
             >
-              Career & Culture at <span className="font-semibold">nexios</span>
+              Career & Culture at <span className="font-bold">nexios</span>
               <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[265px] sm:w-[390px] mt-[-12px] sm:mt-[-15px] mx-auto"></div>
             </div>
           </AnimationOnScroll>
 
-          <div className="font-MuseoSans font-normal text-[16px] sm:text-[18px] text-[#9BA9B4] text-justify md:text-center">
+          <div className="font-MuseoSans font-light text-[16px] sm:text-[18px] text-[#9BA9B4] text-justify md:text-center">
             We are one of the best places to work. nexios makes an atmosphere
             where you can grow your inner self and outer self, show your talent
             It’s a perfect combination between you and nexios when the career

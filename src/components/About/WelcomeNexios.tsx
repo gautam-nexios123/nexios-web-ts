@@ -20,13 +20,13 @@ const WelcomeNexios = () => {
               isVisible ? "animation-zoomIn" : ""
             } relative font-MuseoSans font-light text-[#121212] text-[32px] sm:text-[48px] text-center pb-[40px]`}
           >
-            Welcome To <span className="font-semibold">nexios</span>
+            Welcome To <span className="font-bold">nexios</span>
             <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[280px] sm:w-[420px] mx-auto mt-[-16px] sm:mt-[-24px]"></div>
           </h1>
         </AnimationOnScroll>
 
         <div className="">
-          <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[19px] md:text-center text-justify">
+          <div className="font-MuseoSans font-light text-[#9BA9B4] text-[19px] md:text-center text-justify">
             Nexios Technologies is one of the reckoned Software Development
             Company in Surat. Rapidly changing business state of affairs and
             latest technologies being introduced day by day, always raises the
@@ -36,7 +36,7 @@ const WelcomeNexios = () => {
             software. Our teams have 3 years of experience in the development of
             Software Applications & Systems.
           </div>
-          <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[19px] md:text-center text-justify py-[20px]">
+          <div className="font-MuseoSans font-light text-[#9BA9B4] text-[19px] md:text-center text-justify py-[20px]">
             We have command over the Platforms of Android Development, Angular,
             .Net, PHP, SQL Server, Photoshop, Microsoft Office (Access, Excel,
             and PowerPoint). We also excel in mobile technology and cater to
@@ -52,7 +52,7 @@ const WelcomeNexios = () => {
             <div className="font-MuseoSans font-semibold text-[#121212] text-[28px] text-center py-3">
               International Service Provider
             </div>
-            <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[18px] text-center">
+            <div className="font-MuseoSans font-light text-[#9BA9B4] text-[18px] text-center">
               Our team is providing IT solutions internationally with great
               communication and accuracy.
             </div>
@@ -62,7 +62,7 @@ const WelcomeNexios = () => {
             <div className="font-MuseoSans font-semibold text-[#121212] text-[28px] text-center py-3">
               8 Plus Years Of Trust
             </div>
-            <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[18px] text-center">
+            <div className="font-MuseoSans font-light text-[#9BA9B4] text-[18px] text-center">
               nexios believes in a long term relationship with quality of work.
               We have continuously worked with fixed clients for more than 5
               years.

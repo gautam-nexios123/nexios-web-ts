@@ -129,7 +129,7 @@ const ApplyNow = () => {
                   fullWidth
                 />
                 {error?.firstName && (
-                  <div className="font-MuseoSans font-normal text-red-600 text-sm">
+                  <div className="font-MuseoSans font-light text-red-600 text-sm">
                     {error?.firstName}
                   </div>
                 )}
@@ -144,7 +144,7 @@ const ApplyNow = () => {
                   fullWidth
                 />
                 {error?.lastName && (
-                  <div className="font-MuseoSans font-normal text-red-600 text-sm">
+                  <div className="font-MuseoSans font-light text-red-600 text-sm">
                     {error?.lastName}
                   </div>
                 )}
@@ -161,7 +161,7 @@ const ApplyNow = () => {
                   fullWidth
                 />
                 {error?.email && (
-                  <div className="font-MuseoSans font-normal text-red-600 text-sm">
+                  <div className="font-MuseoSans font-light text-red-600 text-sm">
                     {error?.email}
                   </div>
                 )}
@@ -206,7 +206,7 @@ const ApplyNow = () => {
               </FormControl>
             </div>
             <div className="mt-9 mb-4 md:mb-0">
-              <div className="font-MuseoSans font-normal text-[#9BA9B4] text-[16px] pb-2">
+              <div className="font-MuseoSans font-light text-[#9BA9B4] text-[16px] pb-2">
                 Attach resume (required)
               </div>
               <div className="w-full mb-4 md:mb-0">
@@ -222,7 +222,7 @@ const ApplyNow = () => {
                   className="w-full border-b border-black "
                 />
                 {error?.file && (
-                  <div className="font-MuseoSans font-normal text-red-600 text-sm">
+                  <div className="font-MuseoSans font-light text-red-600 text-sm">
                     {error?.file}
                   </div>
                 )}

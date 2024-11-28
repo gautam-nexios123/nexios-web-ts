@@ -166,7 +166,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
       onClick={!isServices ? handleClick : () => {}}
       onMouseEnter={() => isServices && setIsServicesDropdownOpen(true)}
       onMouseLeave={() => isServices && setIsServicesDropdownOpen(false)}
-      className={`font-MuseoSans font-normal text-[19px] capitalize ${
+      className={`font-MuseoSans font-light text-[19px] capitalize ${
         currentPath === path ? "text-[#399EFD]" : "text-[#121212]"
       } cursor-pointer hover:text-[#399EFD]`}
     >

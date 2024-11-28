@@ -22,7 +22,7 @@ const CareerTopMain: React.FC<CareerProps> = ({
                 {text}
               </h1>
               <p
-                className={`font-MuseoSans font-normal text-[19px] text-justify text-[#9BA9B4]`}
+                className={`font-MuseoSans font-light text-[19px] text-justify text-[#9BA9B4]`}
               >
                 {description}
               </p>

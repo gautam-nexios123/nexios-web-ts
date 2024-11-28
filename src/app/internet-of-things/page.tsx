@@ -16,14 +16,14 @@ const InternetOfThings = () => {
 
       <div className="main-container px-[40px]">
         <div className="w-full mt-16">
-          <div className="font-MuseoSans font-normal text-[20px] text-[#9BA9B4] text-justify md:text-center mb-4">
+          <div className="font-MuseoSans font-light text-[20px] text-[#9BA9B4] text-justify md:text-center mb-4">
             One of the key benefits of the Internet of Things is edge computing.
             Edge computing involves processing tasks on the edge of the network,
             near the devices themselves. This allows devices to access data more
             quickly and easily, eliminating the need for data to travel back to
             central servers.
           </div>
-          <div className="font-MuseoSans font-normal text-[20px] text-[#9BA9B4] text-justify md:text-center mb-4">
+          <div className="font-MuseoSans font-light text-[20px] text-[#9BA9B4] text-justify md:text-center mb-4">
             The Internet of Things (IoT) is a growing trend that refers to the
             interconnectedness of physical devices with the internet. This
             interconnectedness allows devices to communicate with each other and
@@ -32,7 +32,7 @@ const InternetOfThings = () => {
             efficiency and automation, better customer service, and increased
             safety.
           </div>
-          <div className="font-MuseoSans font-normal text-[20px] text-[#9BA9B4] text-justify md:text-center mb-4">
+          <div className="font-MuseoSans font-light text-[20px] text-[#9BA9B4] text-justify md:text-center mb-4">
             BLE (Bluetooth Low Energy) is another important technology in the
             IoT. BLE is a short-range wireless technology that is used to
             connect devices that are close to each other. It’s especially useful
@@ -55,7 +55,7 @@ const InternetOfThings = () => {
               <div className="font-MuseoSans text-[#121212] font-semibold text-[28px] sm:text-[32px] pb-3">
                 What We Provides
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 Narrowband IoT is another important trend in the IoT. Narrowband
                 IoT refers to the use of wireless networks that have a limited
                 range, typically 10 meters or less. This is important because it
@@ -63,7 +63,7 @@ const InternetOfThings = () => {
                 devices, which can lead to faster and more efficient
                 implementations of the IoT.
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 NFC (near-field communication) is also a key technology in the
                 IoT. NFC is a short-range wireless technology that enables users
                 to easily exchange data between devices by touching them
@@ -71,12 +71,12 @@ const InternetOfThings = () => {
                 data that needs to be transferred between devices, which can
                 lead to faster and more efficient implementations of the IoT.
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 Regardless of which platform you choose, we’ll be able to help
                 you choose the right platform and develop your app to meet your
                 specific needs.
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 If you follow our tips, you’ll have a successful business.
               </div>
             </div>

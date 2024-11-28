@@ -68,7 +68,7 @@ const DiscoverService: React.FC = () => {
             isVisible ? "animation-zoomIn" : ""
           } text-center font-MuseoSans font-light text-[22px] sm:text-[32px] mt-[60px] mb-[30px]`}
         >
-          Discover Our <span className="font-semibold">Services</span>
+          Discover Our <span className="font-bold">Services</span>
           <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[225px] sm:w-[325px] mx-auto mt-[-12px] sm:mt-[-15px]"></div>
         </div>
       </AnimationOnScroll>

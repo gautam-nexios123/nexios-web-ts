@@ -65,11 +65,11 @@ const ChooseNexios = () => {
         </div>
       </div>
       <div className="w-[100%] lg:w-[50%]">
-        <div className="font-MuseoSans font-normal text-[22px] sm:text-[32px] text-[#121212] pb-[40px]">
-          Why Choose <span className="font-semibold"> nexios?</span>
+        <div className="font-MuseoSans font-light text-[22px] sm:text-[32px] text-[#121212] pb-[40px]">
+          Why Choose <span className="font-bold"> nexios?</span>
           <div className="bg-[#399EFD] opacity-[25%] h-[8px] w-[210px] sm:w-[310px] mt-[-12px] sm:mt-[-15px]"></div>
         </div>
-        <div className="font-MuseoSans text-justify font-normal text-[16px] sm:text-[18px] text-[#9BA9B4]">
+        <div className="font-MuseoSans text-justify font-light text-[16px] sm:text-[18px] text-[#9BA9B4]">
           We take care of your projects from brainstorming an idea to handing it
           over to your dream users. All we need from you is your amazing idea
           and trust. At Nexios, We brainstorm, Design, and Develop so your
@@ -78,16 +78,16 @@ const ChooseNexios = () => {
           and make them easy for everyone involved.
         </div>
         <ul className="list-disc pl-[18px] mt-[40px]">
-          <li className="font-MuseoSans font-normal text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
+          <li className="font-MuseoSans font-light text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
             Skilled and motivated staff
           </li>
-          <li className="font-MuseoSans font-normal text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
+          <li className="font-MuseoSans font-light text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
             Trained and certified professionals
           </li>
-          <li className="font-MuseoSans font-normal text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
+          <li className="font-MuseoSans font-light text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
             Fully compatible with existing team
           </li>
-          <li className="font-MuseoSans font-normal text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
+          <li className="font-MuseoSans font-light text-[16px] sm:text-[18px] text-[#9BA9B4] pb-4">
             Timely Delivery
           </li>
         </ul>

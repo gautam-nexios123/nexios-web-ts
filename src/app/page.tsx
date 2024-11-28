@@ -21,12 +21,12 @@ export default function Home() {
   return (
     <div className="relative">
       <div className="main-container px-[40px]">
-        <h1 className="font-MuseoSans text-[30px] sm:text-[40px] text-[#121212] font-normal text-center mx-8 my-[20px]">
+        <h1 className="font-MuseoSans text-[30px] sm:text-[40px] text-[#121212] font-light text-center mx-8 my-[20px]">
           <span className="font-bold">We Create Simple Solution</span> <br></br>{" "}
           For Your Complex Business Task
         </h1>
         <div className="w-full">
-          <p className="font-MuseoSans text-[18px] sm:text-[20px] text-[#9BA9B4] font-normal md:text-center text-justify lg:mx-auto lg:w-[80%]">
+          <p className="font-MuseoSans text-[18px] sm:text-[20px] text-[#9BA9B4] font-medium md:text-center text-justify lg:mx-auto lg:w-[80%]">
             Nexios is a global technology partner that enables long-lasting
             value for businesses via the latest technologies. It provides a
             complete solution from concept to reality. We've worked with

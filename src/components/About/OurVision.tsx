@@ -18,7 +18,7 @@ const OurVision = () => {
             <div className="text-[#121212] font-MuseoSans font-semibold text-[38px] lg:text-[48px] pb-3 text-justify">
               Our Vision
             </div>
-            <div className="text-[#9BA9B4] font-MuseoSans font-normal text-[20px] lg:text-[23px] text-justify">
+            <div className="text-[#9BA9B4] font-MuseoSans font-light text-[20px] lg:text-[23px] text-justify">
               We envision ourselves as one of the leading technology consulting
               and development firms in the digital space, providing world-class
               services that will propel your business to new heights.
@@ -30,7 +30,7 @@ const OurVision = () => {
             <div className="text-[#121212] font-MuseoSans font-semibold text-[38px] lg:text-[48px] pb-3 text-justify">
               Our Mission
             </div>
-            <div className="text-[#9BA9B4] font-MuseoSans font-normal text-[20px] lg:text-[23px] text-justify">
+            <div className="text-[#9BA9B4] font-MuseoSans font-light text-[20px] lg:text-[23px] text-justify">
               At nexios, we are on a mission to become the preferred choice for
               technology development and consultancy services across the globe,
               powering business innovation and digitalization across multiple

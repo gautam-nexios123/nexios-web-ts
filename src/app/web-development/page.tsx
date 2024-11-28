@@ -16,7 +16,7 @@ const Webdevelopment = () => {
 
       <div className="main-container px-[40px]">
         <div className="w-full mt-16">
-          <div className="font-MuseoSans font-normal text-[20px] text-[#9BA9B4] text-justify md:text-center">
+          <div className="font-MuseoSans font-light text-[20px] text-[#9BA9B4] text-justify md:text-center">
             For starters, custom web applications offer a unique way to improve
             your business. By creating a custom web application, you can
             increase efficiency and streamline your operations. You can also use
@@ -42,7 +42,7 @@ const Webdevelopment = () => {
               <div className="font-MuseoSans text-[#121212] font-semibold text-[28px] sm:text-[32px] pb-3">
                 What We Provides
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 Web application development is a growing industry, and there are
                 a number of reasons for that. First of all, it’s a great way to
                 create customized and interactive websites. Not only that, but
@@ -69,7 +69,7 @@ const Webdevelopment = () => {
             <div className="font-MuseoSans text-[#121212] font-semibold text-[28px] sm:text-[32px] pb-3 text-center">
               Web Development is a Exciting Field
             </div>
-            <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify lg:text-center pb-2">
+            <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify lg:text-center pb-2">
               Web application development is an extremely exciting field, and
               there are plenty of opportunities for those with the skills to
               take advantage of them. With custom web apps, you can create a

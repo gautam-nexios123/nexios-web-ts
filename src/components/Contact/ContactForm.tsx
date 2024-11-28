@@ -98,7 +98,7 @@ const ContactForm = () => {
               fullWidth
             />
             {error?.firstName && (
-              <div className="font-MuseoSans font-normal text-red-600 text-sm">
+              <div className="font-MuseoSans font-light text-red-600 text-sm">
                 {error?.firstName}
               </div>
             )}
@@ -113,7 +113,7 @@ const ContactForm = () => {
               fullWidth
             />
             {error?.lastName && (
-              <div className="font-MuseoSans font-normal text-red-600 text-sm">
+              <div className="font-MuseoSans font-light text-red-600 text-sm">
                 {error?.lastName}
               </div>
             )}
@@ -130,7 +130,7 @@ const ContactForm = () => {
               fullWidth
             />
             {error?.email && (
-              <div className="font-MuseoSans font-normal text-red-600 text-sm">
+              <div className="font-MuseoSans font-light text-red-600 text-sm">
                 {error?.email}
               </div>
             )}

@@ -10,7 +10,7 @@ const config: Config = {
     theme: {
     extend: {
       fontFamily: {
-        MuseoSans: ["Museo Sans", "sans-serif"],
+        // MuseoSans: ["Museo Sans", "sans-serif"],
       },
       boxShadow: {
         "3xl":

@@ -124,7 +124,7 @@ const ServicesContent: React.FC<ServicesContentProps> = ({
             <div className="font-MuseoSans font-semibold text-[#121212] text-[24px] md:text-[26px] lg:text-[32px] text-center pb-3">
               {service.title}
             </div>
-            <div className="sm:px-10 font-MuseoSans font-semibold text-[#9BA9B4] text-[16px] text-justify lg:text-center md:line-clamp-6 lg:line-clamp-none">
+            <div className="sm:px-10 font-MuseoSans font-light text-[#9BA9B4] text-[16px] text-justify lg:text-center md:line-clamp-6 lg:line-clamp-none">
               {service.description}
             </div>
           </div>
@@ -135,7 +135,7 @@ const ServicesContent: React.FC<ServicesContentProps> = ({
             <div className="font-MuseoSans font-semibold text-[#121212] text-[24px] md:text-[26px] lg:text-[32px] text-center pb-3">
               {service.title}
             </div>
-            <div className="sm:px-10 font-MuseoSans font-semibold text-[#9BA9B4] text-[16px] text-justify lg:text-center md:line-clamp-6 lg:line-clamp-none">
+            <div className="sm:px-10 font-MuseoSans font-light text-[#9BA9B4] text-[16px] text-justify lg:text-center md:line-clamp-6 lg:line-clamp-none">
               {service.description}
             </div>
           </div>

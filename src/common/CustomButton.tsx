@@ -27,7 +27,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
         width: btnWidth,
         borderRadius: "27px",
       }}
-      className={`py-[8px] bg-black font-MuseoSans font-normal text-[18px] shadow-xl`}
+      className={`py-[8px] bg-black font-MuseoSans font-medium text-[15px] shadow-xl`}
     >
       {text}
       {process && (

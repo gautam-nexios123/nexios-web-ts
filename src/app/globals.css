@@ -8,6 +8,39 @@
   margin-right: auto;
 }
 
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('/fonts/museo-sans/MuseoSans_100.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('/fonts/museo-sans/MuseoSans_300.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('/fonts/museo-sans/MuseoSans_500.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Museo Sans';
+  src: url('/fonts/museo-sans/MuseoSans_700.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body{
+  font-family: 'Museo Sans' !important;
+}
+
+.font-MuseoSans{
+  font-family: 'Museo Sans' !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

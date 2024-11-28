@@ -15,7 +15,7 @@ const MobileAppDevelopment = () => {
       />
       <div className="main-container px-[40px]">
         <div className="w-full mt-16">
-          <div className="font-MuseoSans font-normal text-[20px] text-[#9BA9B4] text-justify md:text-center">
+          <div className="font-MuseoSans font-light text-[20px] text-[#9BA9B4] text-justify md:text-center">
             If you’re looking for a way to increase your business’ reach,
             consider developing a mobile application. There’s a growing trend of
             people using mobile apps to access information and services, and
@@ -42,7 +42,7 @@ const MobileAppDevelopment = () => {
               <div className="font-MuseoSans text-[#121212] font-semibold text-[28px] sm:text-[32px] pb-3">
                 What We Provides
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 There are a variety of different mobile app development
                 platforms to choose from, and each has its own strengths and
                 weaknesses. For example, iOS apps are usually more user-friendly
@@ -51,12 +51,12 @@ const MobileAppDevelopment = () => {
                 run on a wider range of devices, including smart TVs and
                 vehicles.
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 Regardless of which platform you choose, we’ll be able to help
                 you choose the right platform and develop your app to meet your
                 specific needs.
               </div>
-              <div className="font-MuseoSans text-[#9BA9B4] font-normal text-[19px] text-justify pb-2">
+              <div className="font-MuseoSans text-[#9BA9B4] font-light text-[19px] text-justify pb-2">
                 If you follow our tips, you’ll have a successful business.
               </div>
             </div>
