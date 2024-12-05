@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../../assets/images/Logo.svg";
-import menuIcon from "../../assets/images/menu-icon.png";
+import menuIcon from "../../assets/images/admin/menuIcon.svg";
 import closeIcon from "../../assets/images/close.svg";
 import CustomButton from "../../common/CustomButton";
 import Image from "next/image";

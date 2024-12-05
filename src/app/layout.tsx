@@ -63,9 +63,9 @@ export default function RootLayout({
         </Script> */}
       </head>
       <body>
-        <Header />
+        {!pathName.includes("/admin") && <Header />}
         <div className="min-h-screen">{children}</div>
-        <Footer />
+        {!pathName.includes("/admin") && <Footer />}
       </body>
     </html>
   );

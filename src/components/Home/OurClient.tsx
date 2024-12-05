@@ -55,6 +55,7 @@ const OurClient = () => {
       const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASEURL}/our_client`);
       if (res?.data?.statusCode === 200) {
         setClientData(res?.data?.data);
+        setLoading(false);
       } else {
         toast.error(res?.data?.message);
       }
@@ -147,7 +148,6 @@ interface CarouselCardProps {
   item: ClientData;
 }
 const CarouselCard: React.FC<CarouselCardProps> = ({ item }) => {
-  console.log("process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${item?.image",`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${item?.image}`);
   return (
     <div className="flex lg:flex-row flex-col items-center gap-[40px] w-full mb-[45px] cursor-pointer">
       <div className="w-[200px] h-[200px] bg-[#399EFD] relative mr-[30px]">
