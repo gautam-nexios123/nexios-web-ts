@@ -7,13 +7,12 @@ import TableLayoutBox from "@/components/Admin/TableLayoutBox";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Button } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { use, useEffect, useRef, useState } from "react";
 import axios from "axios";
-import Image from "next/image";
-import AddTeamForm from "./AddTeamForm";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import AddPortfolioForm from "./AddPortfolioForm";
 
-const OurTeamPage = () => {
+const PortfolioPage = () => {
   const navigate = useRouter();
 
   const [entries, setEntries] = useState(10);
@@ -22,7 +21,7 @@ const OurTeamPage = () => {
   const totalPages = 0;
 
   const [open, setOpen] = useState(false);
-  const [teamData, setTeamData] = useState<any>([]);
+  const [portfolioData, setPortfolioData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const apiCalled = useRef<boolean>(false); // Ref to track if API has been called
 
@@ -39,18 +38,18 @@ const OurTeamPage = () => {
     setCurrentPage(page);
   };
 
-  const handleGetTeam = async () => {
+  const handleGetPortfolioList = async () => {
     if (apiCalled.current) return; // Prevent duplicate calls
     apiCalled.current = true; // Mark as called
 
     setLoading(true);
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASEURL}/our_team`
+        `${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio`
       );
       if (res?.data?.statusCode === 200) {
         setLoading(false);
-        setTeamData(res?.data?.data);
+        setPortfolioData(res?.data?.data);
       } else {
         console.log(res?.data?.message);
       }
@@ -62,13 +61,13 @@ const OurTeamPage = () => {
   };
 
   useEffect(() => {
-    handleGetTeam();
+    handleGetPortfolioList();
   }, []);
 
   return (
     <div className="bg-white p-4">
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold">Team</h1>
+        <h1 className="text-2xl font-semibold">Portfolio</h1>
       </div>
       <div className="flex justify-between md:items-center mb-4 max-md:flex-col">
         <div className="flex items-center space-x-2 max-md:mb-4">
@@ -93,7 +92,7 @@ const OurTeamPage = () => {
             }}
             onClick={() => setOpen(true)}
           >
-            Add Team
+            Add Portfolio
           </Button>
         </div>
       </div>
@@ -106,29 +105,29 @@ const OurTeamPage = () => {
                 Image
               </th>
               <th className="py-[15px] px-4 text-[#454545] font-medium">
-                Name
+                Title
               </th>
-              <th className="py-2 px-4 text-[#454545] font-medium">
-                Designation
+              <th className="py-[15px] px-4 text-[#454545] font-medium">
+                Description
               </th>
               <th className="py-2 px-4 text-[#454545] font-medium">Action</th>
             </tr>
           </thead>
           <tbody className="border">
-            {teamData?.map((item: any, index: number) => {
+            {portfolioData?.map((item: any, index: number) => {
               return (
                 <tr key={index} className="text-center">
                   <td className="flex justify-center py-2">
                     <div className="border border-black w-[80px] h-[80px] flex justify-center items-center">
                       <img
                         src={`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${item?.image}`}
-                        className="object-cover max-w-[80px] max-h-[80px]"
+                        className="object-cover max-w-[78px] max-h-[80px]"
                         alt=""
                       />
                     </div>
                   </td>
-                  <td>{item?.name}</td>
-                  <td>{item?.designation}</td>
+                  <td>{item?.title}</td>
+                  <td className="w-[50%]">{item?.description}</td>
                   <td className="py-2 px-4 text-center">
                     <div
                       style={{
@@ -156,10 +155,10 @@ const OurTeamPage = () => {
       />
 
       <DialogueComp open={open}>
-        <AddTeamForm setOpen={setOpen} />
+        <AddPortfolioForm setOpen={setOpen} />
       </DialogueComp>
     </div>
   );
 };
 
-export default OurTeamPage;
+export default PortfolioPage;

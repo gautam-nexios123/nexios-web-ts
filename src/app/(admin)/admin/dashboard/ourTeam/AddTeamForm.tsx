@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-const AddClientReviewForm = ({ setOpen }: any) => {
+const AddTeamForm = ({ setOpen }: any) => {
   const [selectedImg, setSelectedImg] = useState<any>("");
   const [selectedImgPreview, setSelectedImgPreview] = useState<string | null>(
     null
@@ -18,7 +18,6 @@ const AddClientReviewForm = ({ setOpen }: any) => {
     defaultValues: {
       name: "",
       designation: "",
-      description: "",
       image: "",
     },
   });
@@ -51,7 +50,7 @@ const AddClientReviewForm = ({ setOpen }: any) => {
   return (
     <form className="bg-white py-4 px-[30px]" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold">Create Review</h1>
+        <h1 className="text-2xl font-semibold">Create Team</h1>
       </div>
       <Box
         display="flex"
@@ -114,32 +113,6 @@ const AddClientReviewForm = ({ setOpen }: any) => {
                 </span>
               )}
             </Grid>
-
-            {/* Description */}
-            <Grid item xs={12}>
-              <label className="block text-[17px] font-medium text-gray-700 pb-2">
-                Description<span className="text-red-500">*</span>
-              </label>
-              <Controller
-                name="description"
-                control={control}
-                rules={{ required: "Description is required" }}
-                render={({ field }) => (
-                  <textarea
-                    {...field}
-                    placeholder="Enter Description"
-                    style={{ boxShadow: "0px 4px 8px 0px #00000026" }}
-                    className="w-full min-h-[200px] border-none focus:ring-0 p-3"
-                  ></textarea>
-                )}
-              />
-              {errors?.description && (
-                <span className="text-red-500 text-[14px]">
-                  {errors.description.message}
-                </span>
-              )}
-            </Grid>
-
             {/* Upload File */}
             <Grid item xs={12} md={12}>
               <label className="block text-[17px] font-medium text-gray-700 pb-2">
@@ -227,4 +200,4 @@ const AddClientReviewForm = ({ setOpen }: any) => {
   );
 };
 
-export default AddClientReviewForm;
+export default AddTeamForm;

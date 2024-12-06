@@ -1,14 +1,7 @@
-import { Box, Button, Grid, styled } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Button, Grid } from "@mui/material";
 import { Controller, useForm } from "react-hook-form";
-import CancelIcon from "@mui/icons-material/Cancel";
 
-const AddClientReviewForm = ({ setOpen }: any) => {
-  const [selectedImg, setSelectedImg] = useState<any>("");
-  const [selectedImgPreview, setSelectedImgPreview] = useState<string | null>(
-    null
-  );
-
+const AddCareerForm = ({ setOpen }: any) => {
   const {
     handleSubmit,
     control,
@@ -17,32 +10,10 @@ const AddClientReviewForm = ({ setOpen }: any) => {
   } = useForm({
     defaultValues: {
       name: "",
-      designation: "",
-      description: "",
-      image: "",
+      vacancy: "",
+      experiance_year: "",
     },
   });
-
-  const handleFileChnage = (event: any) => {
-    const file = event.target.files[0];
-    if (file) {
-      setSelectedImg(file); // Store the file
-      const reader = new FileReader();
-      reader.onload = () => {
-        setSelectedImgPreview(reader.result as string); // Set preview URL
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setSelectedImg(null);
-      setSelectedImgPreview(null);
-    }
-  };
-
-  const removeImage = () => {
-    setSelectedImg(null);
-    setSelectedImgPreview(null);
-    setValue("image", "");
-  };
 
   const onSubmit = async (data: any) => {
     console.log("dattta", data);
@@ -51,7 +22,7 @@ const AddClientReviewForm = ({ setOpen }: any) => {
   return (
     <form className="bg-white py-4 px-[30px]" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold">Create Review</h1>
+        <h1 className="text-2xl font-semibold">Create Career</h1>
       </div>
       <Box
         display="flex"
@@ -89,101 +60,54 @@ const AddClientReviewForm = ({ setOpen }: any) => {
               )}
             </Grid>
 
-            {/* Designation */}
+            {/* Vacancy */}
             <Grid item xs={12} md={12}>
               <label className="block text-[17px] font-medium text-gray-700 pb-2">
-                Designation<span className="text-red-500">*</span>
+                Vacancy<span className="text-red-500">*</span>
               </label>
               <Controller
-                name="designation"
+                name="vacancy"
                 control={control}
-                rules={{ required: "Designation is required" }}
+                rules={{ required: "Vacancy is required" }}
                 render={({ field }) => (
                   <input
                     {...field}
                     type="text"
                     className="mt-1 block w-full rounded-md p-3"
-                    placeholder="Enter Designation"
+                    placeholder="Enter Vacancy"
                     style={{ boxShadow: "0px 4px 8px 0px #00000026" }}
                   />
                 )}
               />
-              {errors?.designation && (
+              {errors?.vacancy && (
                 <span className="text-red-500 text-[14px]">
-                  {errors.designation.message}
+                  {errors.vacancy.message}
                 </span>
               )}
             </Grid>
 
-            {/* Description */}
-            <Grid item xs={12}>
-              <label className="block text-[17px] font-medium text-gray-700 pb-2">
-                Description<span className="text-red-500">*</span>
-              </label>
-              <Controller
-                name="description"
-                control={control}
-                rules={{ required: "Description is required" }}
-                render={({ field }) => (
-                  <textarea
-                    {...field}
-                    placeholder="Enter Description"
-                    style={{ boxShadow: "0px 4px 8px 0px #00000026" }}
-                    className="w-full min-h-[200px] border-none focus:ring-0 p-3"
-                  ></textarea>
-                )}
-              />
-              {errors?.description && (
-                <span className="text-red-500 text-[14px]">
-                  {errors.description.message}
-                </span>
-              )}
-            </Grid>
-
-            {/* Upload File */}
             <Grid item xs={12} md={12}>
               <label className="block text-[17px] font-medium text-gray-700 pb-2">
-                Upload Image<span className="text-red-500">*</span>
+                Experience<span className="text-red-500">*</span>
               </label>
-              {selectedImgPreview ? (
-                <div className="relative w-fit">
-                  <img
-                    src={selectedImgPreview}
-                    alt="Image Preview"
-                    className="mt-4 w-32 h-32 object-cover rounded"
+              <Controller
+                name="experiance_year"
+                control={control}
+                rules={{ required: "Experience is required" }}
+                render={({ field }) => (
+                  <input
+                    {...field}
+                    type="text"
+                    className="mt-1 block w-full rounded-md p-3"
+                    placeholder="Enter Experience"
+                    style={{ boxShadow: "0px 4px 8px 0px #00000026" }}
                   />
-                  <div
-                    onClick={() => removeImage()}
-                    className="absolute top-0 right-0 cursor-pointer"
-                  >
-                    <CancelIcon />
-                  </div>
-                </div>
-              ) : (
-                <Controller
-                  name="image"
-                  control={control}
-                  rules={{ required: "Image is required" }}
-                  render={({ field, fieldState }) => (
-                    <div>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        {...field}
-                        onChange={(event) => {
-                          field.onChange(event); // Update react-hook-form's state
-                          handleFileChnage(event); // Call your custom handler
-                        }}
-                        className="w-full block my-2 p-2 cursor-pointer border border-gray-300 rounded bg-gray-100"
-                      />
-                      {errors?.image && (
-                        <span className="text-red-500 text-[14px]">
-                          {errors.image.message}
-                        </span>
-                      )}
-                    </div>
-                  )}
-                />
+                )}
+              />
+              {errors?.experiance_year && (
+                <span className="text-red-500 text-[14px]">
+                  {errors.experiance_year.message}
+                </span>
               )}
             </Grid>
           </Grid>
@@ -227,4 +151,4 @@ const AddClientReviewForm = ({ setOpen }: any) => {
   );
 };
 
-export default AddClientReviewForm;
+export default AddCareerForm;

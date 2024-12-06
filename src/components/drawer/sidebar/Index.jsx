@@ -28,7 +28,10 @@ export default function SidebarList() {
           py: "12px",
           "&:hover": { color: "#399EFD" },
           color: getTextColor("/admin/dashboard/clientReview"),
-          background : pathName === "/admin/dashboard/clientReview" ? "#0000000a" : "inherit"
+          background:
+            pathName === "/admin/dashboard/clientReview"
+              ? "#0000000a"
+              : "inherit",
         }}
         onClick={() => handleNavigation("/admin/dashboard/clientReview")} // Navigate on click
       >
@@ -42,7 +45,8 @@ export default function SidebarList() {
           py: "12px",
           "&:hover": { color: "#399EFD" },
           color: getTextColor("/admin/dashboard/ourTeam"),
-          background : pathName === "/admin/dashboard/ourTeam" ? "#0000000a" : "inherit"
+          background:
+            pathName === "/admin/dashboard/ourTeam" ? "#0000000a" : "inherit",
         }}
         onClick={() => handleNavigation("/admin/dashboard/ourTeam")} // Navigate on click
       >
@@ -50,6 +54,36 @@ export default function SidebarList() {
           {/* <Dashboard width={"20"} color="grey" /> */}
         </ListItemIcon>
         <ListItemText primary="Our Team" />
+      </ListItemButton>
+      <ListItemButton
+        sx={{
+          py: "12px",
+          "&:hover": { color: "#399EFD" },
+          color: getTextColor("/admin/dashboard/portfolio"),
+          background:
+            pathName === "/admin/dashboard/portfolio" ? "#0000000a" : "inherit",
+        }}
+        onClick={() => handleNavigation("/admin/dashboard/portfolio")} // Navigate on click
+      >
+        <ListItemIcon sx={{ minWidth: "42px" }}>
+          {/* <Dashboard width={"20"} color="grey" /> */}
+        </ListItemIcon>
+        <ListItemText primary="Portfolio" />
+      </ListItemButton>
+      <ListItemButton
+        sx={{
+          py: "12px",
+          "&:hover": { color: "#399EFD" },
+          color: getTextColor("/admin/dashboard/career"),
+          background:
+            pathName === "/admin/dashboard/career" ? "#0000000a" : "inherit",
+        }}
+        onClick={() => handleNavigation("/admin/dashboard/career")} // Navigate on click
+      >
+        <ListItemIcon sx={{ minWidth: "42px" }}>
+          {/* <Dashboard width={"20"} color="grey" /> */}
+        </ListItemIcon>
+        <ListItemText primary="Career" />
       </ListItemButton>
     </List>
   );

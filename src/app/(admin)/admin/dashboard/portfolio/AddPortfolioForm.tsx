@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-const AddClientReviewForm = ({ setOpen }: any) => {
+const AddPortfolioForm = ({ setOpen }: any) => {
   const [selectedImg, setSelectedImg] = useState<any>("");
   const [selectedImgPreview, setSelectedImgPreview] = useState<string | null>(
     null
@@ -16,8 +16,7 @@ const AddClientReviewForm = ({ setOpen }: any) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
-      designation: "",
+      title: "",
       description: "",
       image: "",
     },
@@ -51,7 +50,7 @@ const AddClientReviewForm = ({ setOpen }: any) => {
   return (
     <form className="bg-white py-4 px-[30px]" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold">Create Review</h1>
+        <h1 className="text-2xl font-semibold">Create Portfolio</h1>
       </div>
       <Box
         display="flex"
@@ -66,51 +65,25 @@ const AddClientReviewForm = ({ setOpen }: any) => {
             {/* Name Input */}
             <Grid item xs={12} md={12}>
               <label className="block text-[17px] font-medium text-gray-700 pb-2">
-                Name<span className="text-red-500">*</span>
+                Title<span className="text-red-500">*</span>
               </label>
               <Controller
-                name="name"
+                name="title"
                 control={control}
-                rules={{ required: "Name is required" }}
+                rules={{ required: "Title is required" }}
                 render={({ field }) => (
                   <input
                     {...field}
                     type="text"
                     className="mt-1 block w-full rounded-md p-3"
-                    placeholder="Enter Name"
+                    placeholder="Enter Title"
                     style={{ boxShadow: "0px 4px 8px 0px #00000026" }}
                   />
                 )}
               />
-              {errors?.name && (
+              {errors?.title && (
                 <span className="text-red-500 text-[14px]">
-                  {errors.name.message}
-                </span>
-              )}
-            </Grid>
-
-            {/* Designation */}
-            <Grid item xs={12} md={12}>
-              <label className="block text-[17px] font-medium text-gray-700 pb-2">
-                Designation<span className="text-red-500">*</span>
-              </label>
-              <Controller
-                name="designation"
-                control={control}
-                rules={{ required: "Designation is required" }}
-                render={({ field }) => (
-                  <input
-                    {...field}
-                    type="text"
-                    className="mt-1 block w-full rounded-md p-3"
-                    placeholder="Enter Designation"
-                    style={{ boxShadow: "0px 4px 8px 0px #00000026" }}
-                  />
-                )}
-              />
-              {errors?.designation && (
-                <span className="text-red-500 text-[14px]">
-                  {errors.designation.message}
+                  {errors.title.message}
                 </span>
               )}
             </Grid>
@@ -227,4 +200,4 @@ const AddClientReviewForm = ({ setOpen }: any) => {
   );
 };
 
-export default AddClientReviewForm;
+export default AddPortfolioForm;

@@ -7,11 +7,10 @@ import TableLayoutBox from "@/components/Admin/TableLayoutBox";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Button } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { use, useEffect, useRef, useState } from "react";
-import AddClientReviewForm from "./AddClientReviewForm";
 import axios from "axios";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import AddClientReviewForm from "./AddClientReviewForm";
 
 const ClientReview = () => {
   const navigate = useRouter();
@@ -121,13 +120,14 @@ const ClientReview = () => {
             {clientData?.map((item: any, index: number) => {
               return (
                 <tr key={index} className="text-center">
-                  <td className="flex justify-center">
-                    <Image
-                      src={`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${item?.image}`}
-                      alt=""
-                      width={100}
-                      height={100}
-                    />
+                  <td className="flex justify-center py-2">
+                    <div className="border border-black w-[80px] h-[80px] flex justify-center items-center">
+                      <img
+                        src={`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${item?.image}`}
+                        className="object-cover max-w-[80px] max-h-[80px]"
+                        alt=""
+                      />
+                    </div>
                   </td>
                   <td>{item?.name}</td>
                   <td className="w-[50%]">{item?.description}</td>
