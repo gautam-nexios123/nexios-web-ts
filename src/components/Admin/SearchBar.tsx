@@ -2,20 +2,28 @@ import React from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SearchBar = ({ onSearch, placeholder = "Search here", wFull }:any) => {
+interface SearchBarProps {
+  onSearch: (value: string) => void;
+  placeholder?: string;
+  wFull?: boolean;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({
+  onSearch,
+  placeholder = "Search here",
+  wFull,
+}) => {
   return (
     <TextField
       id="input-with-icon-textfield"
       placeholder={placeholder}
       onChange={(e) => onSearch(e.target.value)}
-      slotProps={{
-        input: {
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon sx={{ fontSize: "25px" }} />
-            </InputAdornment>
-          ),
-        },
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <SearchIcon sx={{ fontSize: "25px" }} />
+          </InputAdornment>
+        ),
       }}
       sx={{
         "& .css-5h82ro-MuiInputBase-root-MuiInput-root::after ": {
