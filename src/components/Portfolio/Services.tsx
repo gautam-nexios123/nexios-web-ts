@@ -41,7 +41,7 @@ const Services = () => {
     
     setLoading(true);
     await axios
-      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio`)
+      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio?showAll=${true}`)
       .then((res) => {
         if (res?.data?.status === 200) {
           setLoading(false);

@@ -44,6 +44,9 @@ const Header: React.FC = () => {
       case "/career":
         path = "career";
         break;
+      case "/blog":
+        path = "blog";
+        break;
       case "/contact-us":
         path = "contact-us";
         break;
@@ -97,6 +100,7 @@ const Header: React.FC = () => {
             "portfolio",
             "services",
             "career",
+            "blog",
             "contact-us",
           ]?.map((path) => (
             <MenuItem
@@ -209,6 +213,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({
         "portfolio",
         "services",
         "career",
+        "blog",
         "contact-us",
       ]?.map((path) => (
         <div className="pb-2" key={path}>

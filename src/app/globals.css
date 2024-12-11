@@ -2,43 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-.main-container{
+.main-container {
   max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
 }
 
 @font-face {
-  font-family: 'Museo Sans';
-  src: url('/fonts/museo-sans/MuseoSans_100.otf') format('opentype');
+  font-family: "Museo Sans";
+  src: url("/fonts/museo-sans/MuseoSans_100.otf") format("opentype");
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Museo Sans';
-  src: url('/fonts/museo-sans/MuseoSans_300.otf') format('opentype');
+  font-family: "Museo Sans";
+  src: url("/fonts/museo-sans/MuseoSans_300.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Museo Sans';
-  src: url('/fonts/museo-sans/MuseoSans_500.otf') format('opentype');
+  font-family: "Museo Sans";
+  src: url("/fonts/museo-sans/MuseoSans_500.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Museo Sans';
-  src: url('/fonts/museo-sans/MuseoSans_700.otf') format('opentype');
+  font-family: "Museo Sans";
+  src: url("/fonts/museo-sans/MuseoSans_700.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
 
-body{
-  font-family: 'Museo Sans' !important;
+body {
+  font-family: "Museo Sans" !important;
 }
 
-.font-MuseoSans{
-  font-family: 'Museo Sans' !important;
+.font-MuseoSans {
+  font-family: "Museo Sans" !important;
 }
 
 @layer utilities {
@@ -47,90 +47,152 @@ body{
   }
 }
 
-.ourvision-bg{
+.ourvision-bg {
   background-image: url("../assets/images/about/bg-cerver.svg");
 }
 
- @keyframes slide {
-   0% {
-     width: 0%;
-     left: 0%;
-   }
+@keyframes slide {
+  0% {
+    width: 0%;
+    left: 0%;
+  }
 
-   100% {
-     width: 100%;
-     left: 0%;
-   }
+  100% {
+    width: 100%;
+    left: 0%;
+  }
+}
+
+.animate-horizontalLine-show {
+  animation: slide 2s forwards;
+}
+
+@keyframes line-show {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 100%;
+  }
+}
+
+.animate-verticalLine-show {
+  animation: line-show 2s ease-out forwards;
+}
+
+@keyframes animation-fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-90px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animation-fadeInLeft {
+  animation-name: animation-fadeInLeft;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animation-fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(90px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animation-fadeInRight {
+  animation-name: animation-fadeInRight;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animation-zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animation-zoomIn {
+  animation-name: animation-zoomIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.ql-container.ql-snow {
+  border: none !important;
+}
+
+.ql-editor {
+  box-sizing: border-box;
+  line-height: 1.42;
+  height: calc(100vh - 400px) !important;
+  outline: none;
+  overflow-y: auto;
+  padding: 12px 15px;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.ql-size-small {
+  font-size: 12px;
+}
+.ql-size-large {
+  font-size: 18px;
+}
+.ql-size-huge {
+  font-size: 24px;
+}
+
+.blog-body h1 {
+  font-size: 36px !important;
+}
+.blog-body h2 {
+  font-size: 28px !important;
+}
+
+.blog-body a{
+ color: #1976d2 !important;
+ text-decoration: underline !important;
+}
+
+.blog-body ul{
+ list-style-type: disc;
+ margin-left: 50px;
  }
 
- .animate-horizontalLine-show {
-   animation: slide 2s forwards;
- }
+ .blog-body ol{
+  list-style-type: decimal;
+  margin-left: 50px;
+  }
 
- @keyframes line-show {
-   0% {
-     height: 0;
-   }
+  .ql-align-center{
+    text-align: center;
+  }
 
-   100% {
-     height: 100%;
-   }
- }
+  .ql-align-right{
+    text-align: right;
+  }
 
- .animate-verticalLine-show {
-   animation: line-show 2s ease-out forwards;
- }
-
- @keyframes animation-fadeInLeft {
-   from {
-     opacity: 0;
-     transform: translateX(-90px);
-   }
-
-   to {
-     opacity: 1;
-     transform: translateX(0);
-   }
- }
-
- .animation-fadeInLeft {
-   animation-name: animation-fadeInLeft;
-   animation-duration: 2s;
-   animation-fill-mode: forwards;
- }
-
- @keyframes animation-fadeInRight {
-   from {
-     opacity: 0;
-     transform: translateX(90px);
-   }
-
-   to {
-     opacity: 1;
-     transform: translateX(0);
-   }
- }
-
- .animation-fadeInRight {
-   animation-name: animation-fadeInRight;
-   animation-duration: 2s;
-   animation-fill-mode: forwards;
- }
-
- @keyframes animation-zoomIn {
-   from {
-     opacity: 0;
-     transform: scale(0.5);
-   }
-
-   to {
-     opacity: 1;
-     transform: scale(1);
-   }
- }
-
- .animation-zoomIn {
-   animation-name: animation-zoomIn;
-   animation-duration: 2s;
-   animation-fill-mode: forwards;
- }
+  .ql-align-justify{
+    text-align: justify;
+  }

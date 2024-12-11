@@ -1,16 +1,16 @@
 "use client";
-import Image from "next/image";
-import dotImg from "../../assets/images/home/dot-dot.svg";
-import quateIcon from "../../assets/images/home/quateIcon.svg";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { AnimationOnScroll } from "../Animations";
-import { useCallback, useEffect, useRef, useState } from "react";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { CircularProgress } from "@mui/material";
+import axios from "axios";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import dotImg from "../../assets/images/home/dot-dot.svg";
+import quateIcon from "../../assets/images/home/quateIcon.svg";
+import { AnimationOnScroll } from "../Animations";
 
 const responsive = {
   superLargeDesktop: {
@@ -52,7 +52,7 @@ const OurClient = () => {
 
     setLoading(true);
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASEURL}/client`);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASEURL}/client?showAll=${true}`);
       if (res?.data?.status === 200) {
         setClientData(res?.data?.payload?.data);
         setLoading(false);

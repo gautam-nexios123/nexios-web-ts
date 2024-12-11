@@ -19,7 +19,7 @@ const OpeningPosition = () => {
     
     setLoading(true);
     await axios
-      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/career`)
+      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/career?showAll=${true}`)
       .then((res) => {
         if (res?.data?.status === 200) {
           setLoading(false);
