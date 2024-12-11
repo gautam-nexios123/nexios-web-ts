@@ -11,7 +11,7 @@ const DialogueComp = ({ children, open }: any) => {
   return (
     <>
       {/* Dialog */}
-      <BootstrapDialog className="" open={open} fullWidth>
+      <BootstrapDialog className="" open={open}>
         {children}
       </BootstrapDialog>
     </>

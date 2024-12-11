@@ -59,9 +59,9 @@ const ShedualeCall = () => {
     if (!handleError()) {
       setLoading(true);
       await axios
-        .post(`${process.env.NEXT_PUBLIC_API_BASEURL}/add_schedule`, formData)
+        .post(`${process.env.NEXT_PUBLIC_API_BASEURL}/schedule`, formData)
         .then((res) => {
-          if (res?.data?.statusCode === 200) {
+          if (res?.data?.status === 201) {
             toast.success(res?.data?.message);
             setLoading(false);
             setFormData({
@@ -70,8 +70,6 @@ const ShedualeCall = () => {
               phone: "",
               brief: "",
             });
-          } else {
-            toast.error(res?.data?.message);
           }
         })
         .catch((err) => {
@@ -156,7 +154,7 @@ const ShedualeCall = () => {
               value={formData.brief}
               placeholder="Share your requirements in brief"
               className="bg-transparent w-[80%] lg:w-[65%] text-white text-[16px] font-light border-b outline-none placeholder-white p-2"
-              onChange={(e :any) => handleOnChange(e)}
+              onChange={(e: any) => handleOnChange(e)}
             />
           </div>
           <div className="pt-4 pb-11">

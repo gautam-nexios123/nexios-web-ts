@@ -43,9 +43,9 @@ const Services = () => {
     await axios
       .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio`)
       .then((res) => {
-        if (res?.data?.statusCode === 200) {
+        if (res?.data?.status === 200) {
           setLoading(false);
-          setServicesData(res?.data?.data);
+          setServicesData(res?.data?.payload?.data);
         } else {
           toast.error(res?.data?.message);
         }

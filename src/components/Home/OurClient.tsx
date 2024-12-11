@@ -52,9 +52,9 @@ const OurClient = () => {
 
     setLoading(true);
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASEURL}/our_client`);
-      if (res?.data?.statusCode === 200) {
-        setClientData(res?.data?.data);
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASEURL}/client`);
+      if (res?.data?.status === 200) {
+        setClientData(res?.data?.payload?.data);
         setLoading(false);
       } else {
         toast.error(res?.data?.message);

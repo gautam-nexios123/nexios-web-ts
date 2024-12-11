@@ -85,6 +85,21 @@ export default function SidebarList() {
         </ListItemIcon>
         <ListItemText primary="Career" />
       </ListItemButton>
+      <ListItemButton
+        sx={{
+          py: "12px",
+          "&:hover": { color: "#399EFD" },
+          color: getTextColor("/admin/dashboard/blog"),
+          background:
+            pathName === "/admin/dashboard/blog" ? "#0000000a" : "inherit",
+        }}
+        onClick={() => handleNavigation("/admin/dashboard/blog")} // Navigate on click
+      >
+        <ListItemIcon sx={{ minWidth: "42px" }}>
+          {/* <Dashboard width={"20"} color="grey" /> */}
+        </ListItemIcon>
+        <ListItemText primary="Blog" />
+      </ListItemButton>
     </List>
   );
 }

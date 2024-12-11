@@ -1,13 +1,15 @@
-import { Box, Button, Grid, styled } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Button, CircularProgress, Grid, styled } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CancelIcon from "@mui/icons-material/Cancel";
+import axios from "axios";
 
-const AddTeamForm = ({ setOpen }: any) => {
+const AddTeamForm = ({ setOpen, handleGetTeam, isEditData }: any) => {
   const [selectedImg, setSelectedImg] = useState<any>("");
   const [selectedImgPreview, setSelectedImgPreview] = useState<string | null>(
     null
   );
+  const [loading, setLoading] = useState<boolean>(false);
 
   const {
     handleSubmit,
@@ -45,12 +47,61 @@ const AddTeamForm = ({ setOpen }: any) => {
 
   const onSubmit = async (data: any) => {
     console.log("dattta", data);
+    if (isEditData?.uuid) {
+      setLoading(true);
+      try {
+        const res = await axios.put(
+          `${process.env.NEXT_PUBLIC_API_BASEURL}/team?id=${isEditData?.uuid}`,
+          data
+        );
+        if (res?.data?.status === 200) {
+          setLoading(false);
+          handleGetTeam();
+          setOpen(false);
+        } else {
+          console.log(res?.data?.message);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(true);
+      try {
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASEURL}/team`,
+          data
+        );
+        if (res?.data?.status === 201) {
+          setLoading(false);
+          handleGetTeam();
+          setOpen(false);
+        } else {
+          console.log(res?.data?.message);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
   };
+
+  useEffect(() => {
+    if (isEditData?.uuid) {
+      setValue("name", isEditData?.name);
+      setValue("designation", isEditData?.designation);
+      // setValue("image" , isEditData?.image)
+    }
+  }, [isEditData?.uuid]);
 
   return (
     <form className="bg-white py-4 px-[30px]" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold">Create Team</h1>
+        <h1 className="text-2xl font-semibold">
+          {isEditData?.uuid ? "Edit" : "Create"} Team
+        </h1>
       </div>
       <Box
         display="flex"
@@ -193,7 +244,10 @@ const AddTeamForm = ({ setOpen }: any) => {
           }}
           className="max-sm:w-full"
         >
-          Create
+          {isEditData?.uuid ? "Edit" : "Create"}
+          {loading && (
+            <CircularProgress size={16} className="!text-white ml-3" />
+          )}
         </Button>
       </Box>
     </form>

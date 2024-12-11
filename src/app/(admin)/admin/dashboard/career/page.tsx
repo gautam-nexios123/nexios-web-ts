@@ -11,22 +11,26 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import AddCareerForm from "./AddCareerForm";
+import useDebounce from "@/common/useDebounce";
+import DeleteModelBody from "@/common/DeleteModelBody";
+import NoDataFound from "@/common/noDataFound";
 
 const CareerPage = () => {
-  const navigate = useRouter();
-
-  const [entries, setEntries] = useState(10);
+  const [careerData, setCareerData] = useState<any>([]);
+  const [recordPerPage, setRecordPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 0;
+  const [totalRecords, setTotalRecords] = useState(0);
 
   const [open, setOpen] = useState(false);
-  const [careerData, setCareerData] = useState<any>([]);
+  const [isEditData, setIsEditData] = useState({});
+  const [delMolOpen, setDelMolOpen] = useState(false);
+  const [delId, setDelID] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
-  const apiCalled = useRef<boolean>(false); // Ref to track if API has been called
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   const handleEntriesChange = (event: any) => {
-    setEntries(event.target.value);
+    setRecordPerPage(event.target.value);
     setCurrentPage(1);
   };
 
@@ -38,18 +42,37 @@ const CareerPage = () => {
     setCurrentPage(page);
   };
 
-  const handleGetClient = async () => {
-    if (apiCalled.current) return; // Prevent duplicate calls
-    apiCalled.current = true; // Mark as called
+  const handleDelete = async () => {
+    try {
+      const res = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_BASEURL}/career?id=${delId}`
+      );
+      if (res?.data?.status === 200) {
+        handleGetCareer();
+        setDelMolOpen(false);
+      } else {
+        console.log(res?.data?.message);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setDelMolOpen(false);
+    }
+  };
 
+  const handleGetCareer = async () => {
+    const searchValue = debouncedSearchTerm
+      ? JSON.stringify({ search: debouncedSearchTerm })
+      : "";
     setLoading(true);
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASEURL}/open_position`
+        `${process.env.NEXT_PUBLIC_API_BASEURL}/career?pageNumber=${currentPage}&recordsPerPage=${recordPerPage}&search=${searchValue}`
       );
-      if (res?.data?.statusCode === 200) {
+      if (res?.data?.status === 200) {
         setLoading(false);
-        setCareerData(res?.data?.data);
+        setCareerData(res?.data?.payload?.data);
+        setTotalRecords(res?.data?.pager?.totalRecords);
       } else {
         console.log(res?.data?.message);
       }
@@ -61,8 +84,8 @@ const CareerPage = () => {
   };
 
   useEffect(() => {
-    handleGetClient();
-  }, []);
+    handleGetCareer();
+  }, [currentPage, recordPerPage, debouncedSearchTerm]);
 
   return (
     <div className="bg-white p-4">
@@ -73,7 +96,7 @@ const CareerPage = () => {
         <div className="flex items-center space-x-2 max-md:mb-4">
           <span className="text-gray-700">Show</span>
           <EntriesSelector
-            entries={entries}
+            entries={recordPerPage}
             handleChange={handleEntriesChange}
           />
           <span className="text-gray-700">Entries</span>
@@ -90,7 +113,10 @@ const CareerPage = () => {
               borderRadius: "25px",
               fontSize: { xs: "12px", sm: "13px" },
             }}
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setIsEditData({});
+              setOpen(true);
+            }}
           >
             Add Career
           </Button>
@@ -114,40 +140,72 @@ const CareerPage = () => {
             </tr>
           </thead>
           <tbody className="border">
-            {careerData?.map((item: any, index: number) => {
-              return (
-                <tr key={index} className="text-center">
-                  <td>{item?.name}</td>
-                  <td className="w-[50%]">{item?.vacancy}</td>
-                  <td>{item?.experiance_year}</td>
-                  <td className="py-2 px-4 text-center">
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "10px",
-                      }}
-                    >
-                      <EditIcon className="cursor-pointer text-blue-800" />
-                      <DeleteIcon className="cursor-pointer text-red-500" />
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+            {careerData?.length > 0 ? (
+              careerData?.map((item: any, index: number) => {
+                return (
+                  <tr key={index} className="text-center">
+                    <td>{item?.name}</td>
+                    <td className="w-[50%]">{item?.vacancy}</td>
+                    <td>{item?.experience_year}</td>
+                    <td className="py-2 px-4 text-center">
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        <div
+                          onClick={() => {
+                            setOpen(true);
+                            setIsEditData(item);
+                          }}
+                        >
+                          <EditIcon className="cursor-pointer text-blue-800" />
+                        </div>
+                        <div
+                          onClick={() => {
+                            setDelID(item?.uuid);
+                            setDelMolOpen(true);
+                          }}
+                          className=""
+                        >
+                          <DeleteIcon className="cursor-pointer text-red-500" />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <NoDataFound loading={loading} />
+            )}
           </tbody>
         </table>
       </TableLayoutBox>
 
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalRecords={totalRecords}
+        entries={recordPerPage}
         onPageChange={handlePageChange}
       />
 
       <DialogueComp open={open}>
-        <AddCareerForm setOpen={setOpen} />
+        <AddCareerForm
+          setOpen={setOpen}
+          handleGetCareer={handleGetCareer}
+          isEditData={isEditData}
+        />
+      </DialogueComp>
+
+      <DialogueComp open={delMolOpen}>
+        <DeleteModelBody
+          setOpen={setDelMolOpen}
+          handleDelete={handleDelete}
+          label={"Position"}
+        />
       </DialogueComp>
     </div>
   );

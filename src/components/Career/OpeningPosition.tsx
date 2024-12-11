@@ -19,11 +19,11 @@ const OpeningPosition = () => {
     
     setLoading(true);
     await axios
-      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/open_position`)
+      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/career`)
       .then((res) => {
-        if (res?.data?.statusCode === 200) {
+        if (res?.data?.status === 200) {
           setLoading(false);
-          setPositionData(res?.data?.data);
+          setPositionData(res?.data?.payload?.data);
         } else {
           toast.error(res?.data?.message);
         }
@@ -119,7 +119,7 @@ const PositonCard: React.FC<PositionCardProps> = ({ item, index }) => {
           index % 2 !== 0 ? "text-white" : "text-[#121212]"
         } font-MuseoSans font-light text-[30px] pb-3`}
       >
-        {item?.experiance_year}
+        {item?.experience_year}
       </div>
       <div className="flex justify-center mt-2">
         <CustomButton

@@ -51,11 +51,11 @@ const MeetOurTeam = () => {
 
     setLoading(true);
     await axios
-      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/our_team`)
+      .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/team`)
       .then((res) => {
-        if (res?.data?.statusCode === 200) {
+        if (res?.data?.status === 200) {
           setLoading(false);
-          setTeamData(res?.data?.data);
+          setTeamData(res?.data?.payload?.data);
         } else {
           toast.error(res?.data?.message);
         }

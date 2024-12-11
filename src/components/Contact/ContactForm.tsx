@@ -45,7 +45,6 @@ const ContactForm = () => {
       newErrors.email = "Enter correct email !";
       isValid = true;
     }
-
     setError(newErrors);
     return isValid;
   };
@@ -60,9 +59,9 @@ const ContactForm = () => {
     if (!handleError()) {
       setLoading(true);
       await axios
-        .post(`${process.env.NEXT_PUBLIC_API_BASEURL}/contact_us`, formData)
+        .post(`${process.env.NEXT_PUBLIC_API_BASEURL}/contact`, formData)
         .then((res) => {
-          if (res?.data?.statusCode === 200) {
+          if (res?.data?.status === 201) {
             toast.success(res?.data?.message);
             setFormData({
               firstName: "",

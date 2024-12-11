@@ -1,7 +1,11 @@
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, CircularProgress, Grid } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
-const AddCareerForm = ({ setOpen }: any) => {
+const AddCareerForm = ({ setOpen, handleGetCareer, isEditData }: any) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   const {
     handleSubmit,
     control,
@@ -11,18 +15,68 @@ const AddCareerForm = ({ setOpen }: any) => {
     defaultValues: {
       name: "",
       vacancy: "",
-      experiance_year: "",
+      experience_year: "",
     },
   });
 
   const onSubmit = async (data: any) => {
     console.log("dattta", data);
+    if (isEditData?.uuid) {
+      setLoading(true);
+      try {
+        const res = await axios.put(
+          `${process.env.NEXT_PUBLIC_API_BASEURL}/career?id=${isEditData?.uuid}`,
+          data
+        );
+        if (res?.data?.status === 200) {
+          setLoading(false);
+          handleGetCareer();
+          setOpen(false);
+        } else {
+          console.log(res?.data?.message);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(true);
+      try {
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASEURL}/career`,
+          data
+        );
+        if (res?.data?.status === 201) {
+          setLoading(false);
+          handleGetCareer();
+          setOpen(false);
+        } else {
+          console.log(res?.data?.message);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
   };
+
+  useEffect(() => {
+    if (isEditData?.uuid) {
+      setValue("name", isEditData?.name);
+      setValue("vacancy", isEditData?.vacancy);
+      setValue("experience_year", isEditData?.experience_year);
+      // setValue("image" , isEditData?.image)
+    }
+  }, [isEditData?.uuid]);
 
   return (
     <form className="bg-white py-4 px-[30px]" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-semibold">Create Career</h1>
+        <h1 className="text-2xl font-semibold">
+          {isEditData?.uuid ? "Edit" : "Create"} Career
+        </h1>
       </div>
       <Box
         display="flex"
@@ -68,7 +122,13 @@ const AddCareerForm = ({ setOpen }: any) => {
               <Controller
                 name="vacancy"
                 control={control}
-                rules={{ required: "Vacancy is required" }}
+                rules={{
+                  required: "Vacancy is required",
+                  pattern: {
+                    value: /^[0-9]+$/, // Regex for numbers only
+                    message: "Only numbers are allowed",
+                  },
+                }}
                 render={({ field }) => (
                   <input
                     {...field}
@@ -91,7 +151,7 @@ const AddCareerForm = ({ setOpen }: any) => {
                 Experience<span className="text-red-500">*</span>
               </label>
               <Controller
-                name="experiance_year"
+                name="experience_year"
                 control={control}
                 rules={{ required: "Experience is required" }}
                 render={({ field }) => (
@@ -104,9 +164,9 @@ const AddCareerForm = ({ setOpen }: any) => {
                   />
                 )}
               />
-              {errors?.experiance_year && (
+              {errors?.experience_year && (
                 <span className="text-red-500 text-[14px]">
-                  {errors.experiance_year.message}
+                  {errors.experience_year.message}
                 </span>
               )}
             </Grid>
@@ -144,7 +204,10 @@ const AddCareerForm = ({ setOpen }: any) => {
           }}
           className="max-sm:w-full"
         >
-          Create
+          {isEditData?.uuid ? "Edit" : "Create"}
+          {loading && (
+            <CircularProgress size={16} className="!text-white ml-3" />
+          )}
         </Button>
       </Box>
     </form>

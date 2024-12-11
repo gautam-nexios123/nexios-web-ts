@@ -1,4 +1,6 @@
 "use client";
+import NoDataFound from "@/common/noDataFound";
+import useDebounce from "@/common/useDebounce";
 import DialogueComp from "@/components/Admin/DialogueComp";
 import EntriesSelector from "@/components/Admin/EntriesSelector";
 import Pagination from "@/components/Admin/Pagination";
@@ -8,25 +10,26 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Button } from "@mui/material";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import AddClientReviewForm from "./AddClientReviewForm";
+import DeleteModelBody from "@/common/DeleteModelBody";
 
 const ClientReview = () => {
-  const navigate = useRouter();
-
-  const [entries, setEntries] = useState(10);
+  const [recordPerPage, setRecordPerPage] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 0;
+  const [totalRecords, setTotalRecords] = useState(0);
 
   const [open, setOpen] = useState(false);
+  const [isEditData, setIsEditData] = useState({});
+  const [delMolOpen, setDelMolOpen] = useState(false);
+  const [delId, setDelID] = useState("");
   const [clientData, setClientData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const apiCalled = useRef<boolean>(false); // Ref to track if API has been called
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   const handleEntriesChange = (event: any) => {
-    setEntries(event.target.value);
+    setRecordPerPage(event.target.value);
     setCurrentPage(1);
   };
 
@@ -38,18 +41,37 @@ const ClientReview = () => {
     setCurrentPage(page);
   };
 
-  const handleGetClient = async () => {
-    if (apiCalled.current) return; // Prevent duplicate calls
-    apiCalled.current = true; // Mark as called
+  const handleDelete = async () => {
+    try {
+      const res = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_BASEURL}/client?id=${delId}`
+      );
+      if (res?.data?.status === 200) {
+        handleGetClient();
+        setDelMolOpen(false);
+      } else {
+        console.log(res?.data?.message);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setDelMolOpen(false);
+    }
+  };
 
+  const handleGetClient = async () => {
+    const searchValue = debouncedSearchTerm
+      ? JSON.stringify({ search: debouncedSearchTerm })
+      : "";
     setLoading(true);
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASEURL}/our_client`
+        `${process.env.NEXT_PUBLIC_API_BASEURL}/client?pageNumber=${currentPage}&recordsPerPage=${recordPerPage}&search=${searchValue}`
       );
-      if (res?.data?.statusCode === 200) {
+      if (res?.data?.status === 200) {
         setLoading(false);
-        setClientData(res?.data?.data);
+        setClientData(res?.data?.payload?.data);
+        setTotalRecords(res?.data?.pager?.totalRecords);
       } else {
         console.log(res?.data?.message);
       }
@@ -62,7 +84,7 @@ const ClientReview = () => {
 
   useEffect(() => {
     handleGetClient();
-  }, []);
+  }, [currentPage, recordPerPage, debouncedSearchTerm]);
 
   return (
     <div className="bg-white p-4">
@@ -73,7 +95,7 @@ const ClientReview = () => {
         <div className="flex items-center space-x-2 max-md:mb-4">
           <span className="text-gray-700">Show</span>
           <EntriesSelector
-            entries={entries}
+            entries={recordPerPage}
             handleChange={handleEntriesChange}
           />
           <span className="text-gray-700">Entries</span>
@@ -90,7 +112,10 @@ const ClientReview = () => {
               borderRadius: "25px",
               fontSize: { xs: "12px", sm: "13px" },
             }}
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              setIsEditData({});
+              setOpen(true);
+            }}
           >
             Add Client Review
           </Button>
@@ -117,49 +142,80 @@ const ClientReview = () => {
             </tr>
           </thead>
           <tbody className="border">
-            {clientData?.map((item: any, index: number) => {
-              return (
-                <tr key={index} className="text-center">
-                  <td className="flex justify-center py-2">
-                    <div className="border border-black w-[80px] h-[80px] flex justify-center items-center">
-                      <img
-                        src={`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${item?.image}`}
-                        className="object-cover max-w-[80px] max-h-[80px]"
-                        alt=""
-                      />
-                    </div>
-                  </td>
-                  <td>{item?.name}</td>
-                  <td className="w-[50%]">{item?.description}</td>
-                  <td>{item?.designation}</td>
-                  <td className="py-2 px-4 text-center">
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "10px",
-                      }}
-                    >
-                      <EditIcon className="cursor-pointer text-blue-800" />
-                      <DeleteIcon className="cursor-pointer text-red-500" />
-                    </div>
-                  </td>
-                </tr>
-              );
-            })}
+            {clientData?.length > 0 ? (
+              clientData?.map((item: any, index: number) => {
+                return (
+                  <tr key={index} className="text-center">
+                    <td className="flex justify-center py-2">
+                      <div className="border border-black w-[80px] h-[80px] flex justify-center items-center">
+                        <img
+                          src={`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${item?.image}`}
+                          className="object-cover max-w-[80px] max-h-[80px]"
+                          alt=""
+                        />
+                      </div>
+                    </td>
+                    <td>{item?.name}</td>
+                    <td className="w-[50%]">{item?.description}</td>
+                    <td>{item?.designation}</td>
+                    <td className="py-2 px-4 text-center">
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        <div
+                          onClick={() => {
+                            setOpen(true);
+                            setIsEditData(item);
+                          }}
+                        >
+                          <EditIcon className="cursor-pointer text-blue-800" />
+                        </div>
+                        <div
+                          onClick={() => {
+                            setDelID(item?.uuid);
+                            setDelMolOpen(true);
+                          }}
+                          className=""
+                        >
+                          <DeleteIcon className="cursor-pointer text-red-500" />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <NoDataFound loading={loading} />
+            )}
           </tbody>
         </table>
       </TableLayoutBox>
 
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalRecords={totalRecords}
+        entries={recordPerPage}
         onPageChange={handlePageChange}
       />
 
       <DialogueComp open={open}>
-        <AddClientReviewForm setOpen={setOpen} />
+        <AddClientReviewForm
+          setOpen={setOpen}
+          handleGetClient={handleGetClient}
+          isEditData={isEditData}
+        />
+      </DialogueComp>
+      <DialogueComp open={delMolOpen}>
+        <DeleteModelBody
+          setOpen={setDelMolOpen}
+          handleDelete={handleDelete}
+          label={"Client"}
+        />
       </DialogueComp>
     </div>
   );
