@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 
 const useWindowHeight = () => {
   // Initialize state with window height
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+  const [windowHeight, setWindowHeight] = useState(window?.innerHeight);
 
   useEffect(() => {
     // Handler to update state when the window is resized
     const handleResize = () => {
-      setWindowHeight(window.innerHeight);
+      setWindowHeight(window?.innerHeight);
     };
 
     // Add event listener to track window resizing

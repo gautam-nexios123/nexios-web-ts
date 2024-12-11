@@ -15,7 +15,7 @@ const CountingBanner = () => {
       const element = document.getElementById("counting-banner");
       if (element) {
         const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
+        const windowHeight = window?.innerHeight;
         if (elementTop < windowHeight * 0.75) {
           setIsVisible(true);
         }

@@ -1,3 +1,4 @@
+import axiosInstance from "@/service/axiosInstance";
 import { Box, Button, CircularProgress, Grid } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -24,7 +25,7 @@ const AddCareerForm = ({ setOpen, handleGetCareer, isEditData }: any) => {
     if (isEditData?.uuid) {
       setLoading(true);
       try {
-        const res = await axios.put(
+        const res = await axiosInstance.put(
           `${process.env.NEXT_PUBLIC_API_BASEURL}/career?id=${isEditData?.uuid}`,
           data
         );
@@ -43,7 +44,7 @@ const AddCareerForm = ({ setOpen, handleGetCareer, isEditData }: any) => {
     } else {
       setLoading(true);
       try {
-        const res = await axios.post(
+        const res = await axiosInstance.post(
           `${process.env.NEXT_PUBLIC_API_BASEURL}/career`,
           data
         );

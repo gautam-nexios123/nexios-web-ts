@@ -13,6 +13,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AddClientReviewForm from "./AddClientReviewForm";
 import DeleteModelBody from "@/common/DeleteModelBody";
+import axiosInstance from "@/service/axiosInstance";
 
 const ClientReview = () => {
   const [recordPerPage, setRecordPerPage] = useState(10);
@@ -43,7 +44,7 @@ const ClientReview = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await axios.delete(
+      const res = await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_BASEURL}/client?id=${delId}`
       );
       if (res?.data?.status === 200) {

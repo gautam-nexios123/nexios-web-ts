@@ -13,7 +13,7 @@ const InterViewProcess = () => {
       const element = document.getElementById("process-interview");
       if (element) {
         const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
+        const windowHeight = window?.innerHeight;
         if (elementTop < windowHeight * 0.75) {
           setActive(true);
         }

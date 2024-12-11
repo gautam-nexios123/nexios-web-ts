@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Logo from "../../../../assets/images/Logo.svg";
 import axios from "axios";
@@ -7,28 +7,23 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Login = () => {
-  const baseURL = process.env.NEXT_PUBLIC_FRONTEND_LIVE_URL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleLogin = async (e :any) => {
-    router.push("/admin/dashboard/clientReview");
+  const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${baseURL}/public/login`, {
-        email,
-        password,
-      });
+      const response = await axios.post("/api/login", { email, password });
+  
       if (response.status === 200) {
-        localStorage.setItem("token", response.data.payload.token);
-        toast.success("Login successful! Redirecting...");
+        toast.success(response?.data?.message);
         setTimeout(() => {
           router.push("/admin/dashboard/clientReview");
         }, 500);
       }
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || "Something went wrong!");
     }
   };
 
@@ -38,7 +33,11 @@ const Login = () => {
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
         <div className="max-w-md w-full">
           <div className="text-center flex justify-center mb-6">
-            <Image src={Logo} style={{ width: "150px", height: "170px" }} alt="logo" />
+            <Image
+              src={Logo}
+              style={{ width: "150px", height: "170px" }}
+              alt="logo"
+            />
           </div>
 
           <h2 className="text-2xl font-bold text-center text-[#D3A99C] mb-4">

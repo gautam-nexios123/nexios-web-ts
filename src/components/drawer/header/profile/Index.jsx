@@ -5,7 +5,9 @@ import { alpha, styled } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -54,11 +56,25 @@ export default function Profile() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useRouter();
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("/api/logout");
+      if (response.status === 200) {
+        toast.success("Logged out successfully!");
+        navigate.push("/admin/login");
+      }
+    } catch (error) {
+      toast.error("Something went wrong while logging out!");
+    }
   };
 
   return (
@@ -77,7 +93,10 @@ export default function Profile() {
           <div className="">
             <Avatar sx={{ bgcolor: "#37414D" }}>G</Avatar>
           </div>
-          <div className="font-medium max-sm:hidden" style={{ lineHeight: "20px" }}>
+          <div
+            className="font-medium max-sm:hidden"
+            style={{ lineHeight: "20px" }}
+          >
             <p className="text-[#399EFD] font-medium">Gaurang</p>
             <p className="text-sm text-[#17263A] text-left">Super Admin</p>
           </div>
@@ -97,11 +116,7 @@ export default function Profile() {
         onClose={handleClose}
       >
         <MenuItem
-          onClick={() => {
-            setAnchorEl(null);
-            localStorage.removeItem("token");
-            navigate.push("/admin/login");
-          }}
+          onClick={handleLogout}
           disableRipple
           className="gap-[10px]"
           sx={{

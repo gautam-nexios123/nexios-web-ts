@@ -6,7 +6,7 @@ export const AnimationOnScroll = ({ children, id, setIsVisible }) => {
       const element = document.getElementById(id);
       if (element) {
         const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
+        const windowHeight = window?.innerHeight;
         if (elementTop < windowHeight * 0.75) {
           setIsVisible(true);
         }

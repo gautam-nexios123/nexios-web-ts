@@ -14,6 +14,7 @@ import AddPortfolioForm from "./AddPortfolioForm";
 import useDebounce from "@/common/useDebounce";
 import DeleteModelBody from "@/common/DeleteModelBody";
 import NoDataFound from "@/common/noDataFound";
+import axiosInstance from "@/service/axiosInstance";
 
 const PortfolioPage = () => {
   const [portfolioData, setPortfolioData] = useState<any>([]);
@@ -44,7 +45,7 @@ const PortfolioPage = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await axios.delete(
+      const res = await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio?id=${delId}`
       );
       if (res?.data?.status === 200) {

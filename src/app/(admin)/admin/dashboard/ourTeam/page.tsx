@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import AddTeamForm from "./AddTeamForm";
 import DeleteModelBody from "@/common/DeleteModelBody";
 import NoDataFound from "@/common/noDataFound";
+import axiosInstance from "@/service/axiosInstance";
 
 const OurTeamPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -44,7 +45,7 @@ const OurTeamPage = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await axios.delete(
+      const res = await axiosInstance.delete(
         `${process.env.NEXT_PUBLIC_API_BASEURL}/team?id=${delId}`
       );
       if (res?.data?.status === 200) {

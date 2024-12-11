@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import CancelIcon from "@mui/icons-material/Cancel";
 import axios from "axios";
+import axiosInstance from "@/service/axiosInstance";
 
 const AddPortfolioForm = ({
   setOpen,
@@ -54,7 +55,7 @@ const AddPortfolioForm = ({
     if (isEditData?.uuid) {
       setLoading(true);
       try {
-        const res = await axios.put(
+        const res = await axiosInstance.put(
           `${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio?id=${isEditData?.uuid}`,
           data
         );
@@ -73,7 +74,7 @@ const AddPortfolioForm = ({
     } else {
       setLoading(true);
       try {
-        const res = await axios.post(
+        const res = await axiosInstance.post(
           `${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio`,
           data
         );

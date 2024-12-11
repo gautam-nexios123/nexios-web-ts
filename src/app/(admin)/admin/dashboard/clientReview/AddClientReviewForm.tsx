@@ -1,8 +1,8 @@
-import { Box, Button, CircularProgress, Grid, styled } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
+import axiosInstance from "@/service/axiosInstance";
 import CancelIcon from "@mui/icons-material/Cancel";
-import axios from "axios";
+import { Box, Button, CircularProgress, Grid } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 
 const AddClientReviewForm = ({ setOpen, handleGetClient, isEditData }: any) => {
   const [selectedImg, setSelectedImg] = useState<any>("");
@@ -54,7 +54,7 @@ const AddClientReviewForm = ({ setOpen, handleGetClient, isEditData }: any) => {
     if (isEditData?.uuid) {
       setLoading(true);
       try {
-        const res = await axios.put(
+        const res = await axiosInstance.put(
           `${process.env.NEXT_PUBLIC_API_BASEURL}/client?id=${isEditData?.uuid}`,
           data
         );
@@ -73,7 +73,7 @@ const AddClientReviewForm = ({ setOpen, handleGetClient, isEditData }: any) => {
     } else {
       setLoading(true);
       try {
-        const res = await axios.post(
+        const res = await axiosInstance.post(
           `${process.env.NEXT_PUBLIC_API_BASEURL}/client`,
           data
         );
