@@ -1,4 +1,5 @@
-import axiosInstance from "@/service/axiosInstance";
+import dynamic from "next/dynamic";
+import React, { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
@@ -9,10 +10,12 @@ import Slide from "@mui/material/Slide";
 import Toolbar from "@mui/material/Toolbar";
 import { TransitionProps } from "@mui/material/transitions";
 import Typography from "@mui/material/Typography";
-import React, { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import CancelIcon from "@mui/icons-material/Cancel";
+import "react-quill/dist/quill.snow.css";
+import axiosInstance from "@/service/axiosInstance";
+
+// Dynamically import ReactQuill
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const modules = {
   toolbar: [
@@ -21,7 +24,7 @@ const modules = {
     ["bold", "italic", "underline"],
     [{ list: "ordered" }, { list: "bullet" }],
     ["link"],
-    // ["link", "image"],
+     // ["link", "image"],
     [{ align: [] }],
     ["clean"],
   ],
@@ -49,12 +52,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const FullScreenModel = ({
-  open,
-  setOpen,
-  handleGetBlogs,
-  isEditData,
-}: any) => {
+const FullScreenModel = ({ open, setOpen, handleGetBlogs, isEditData }: any) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [selectedImg, setSelectedImg] = useState<any>("");
@@ -113,7 +111,7 @@ const FullScreenModel = ({
     const payload = {
       title: title,
       html: content,
-      image : selectedImgPreview
+      image: selectedImgPreview,
     };
     if (validateForm()) {
       if (isEditData?.uuid) {
@@ -132,8 +130,6 @@ const FullScreenModel = ({
           }
         } catch (err) {
           console.error(err);
-        } finally {
-          // setLoading(false);
         }
       } else {
         try {
@@ -151,8 +147,6 @@ const FullScreenModel = ({
           }
         } catch (err) {
           console.error(err);
-        } finally {
-          // setLoading(false);
         }
       }
     }

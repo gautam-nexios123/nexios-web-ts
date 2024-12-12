@@ -1,10 +1,10 @@
 import React from "react";
 import { Box } from "@mui/material";
-import useWindowHeight from "./customHooks/useWindowHeight";
+// import useWindowHeight from "./customHooks/useWindowHeight";
 import useWindowWidth from "./customHooks/useWindowWidth";
 
 const TableLayoutBox = (props: any) => {
-  const windowHeight = useWindowHeight();
+  // const windowHeight = useWindowHeight();
   const windowWidth = useWindowWidth();
   return (
     <Box
