@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 const AddTeamForm = ({ setOpen, handleGetTeam, isEditData }: any) => {
-  const [selectedImg, setSelectedImg] = useState<any>("");
   const [selectedImgPreview, setSelectedImgPreview] = useState<string | null>(
     null
   );
@@ -14,87 +13,85 @@ const AddTeamForm = ({ setOpen, handleGetTeam, isEditData }: any) => {
   const {
     handleSubmit,
     control,
+    reset,
     setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
       name: "",
       designation: "",
-      image: "",
+      image: null,
     },
   });
 
   const handleFileChnage = (event: any) => {
     const file = event.target.files[0];
     if (file) {
-      setSelectedImg(file); // Store the file
+      setValue("image", file); // Store the file
       const reader = new FileReader();
       reader.onload = () => {
         setSelectedImgPreview(reader.result as string); // Set preview URL
       };
       reader.readAsDataURL(file);
     } else {
-      setSelectedImg(null);
+      setValue("image", null);
       setSelectedImgPreview(null);
     }
   };
 
   const removeImage = () => {
-    setSelectedImg(null);
     setSelectedImgPreview(null);
-    setValue("image", "");
+    setValue("image", null);
   };
 
   const onSubmit = async (data: any) => {
-    console.log("dattta", data);
-    if (isEditData?.uuid) {
+    const formData = new FormData();
+    typeof data?.image !== "string" && formData.append("image", data?.image);
+    formData.append("name", data?.name);
+    formData.append("designation", data?.designation);
+
+    try {
       setLoading(true);
-      try {
-        const res = await axiosInstance.put(
-          `${process.env.NEXT_PUBLIC_API_BASEURL}/team?id=${isEditData?.uuid}`,
-          data
-        );
-        if (res?.data?.status === 200) {
-          setLoading(false);
-          handleGetTeam();
-          setOpen(false);
-        } else {
-          console.log(res?.data?.message);
-        }
-      } catch (err) {
-        console.error(err);
-      } finally {
+      const res = isEditData?.uuid
+        ? await axiosInstance.put(
+            `${process.env.NEXT_PUBLIC_API_BASEURL}/team?id=${isEditData?.uuid}`,
+            formData
+          )
+        : await axiosInstance.post(
+            `${process.env.NEXT_PUBLIC_API_BASEURL}/team`,
+            formData
+          );
+
+      if (res?.data?.status === 200 || res?.data?.status === 201) {
+        setLoading(false);
+        handleGetTeam();
+        reset();
+        setOpen(false);
+      } else {
+        console.log(res?.data?.message);
         setLoading(false);
       }
-    } else {
-      setLoading(true);
-      try {
-        const res = await axiosInstance.post(
-          `${process.env.NEXT_PUBLIC_API_BASEURL}/team`,
-          data
-        );
-        if (res?.data?.status === 201) {
-          setLoading(false);
-          handleGetTeam();
-          setOpen(false);
-        } else {
-          console.log(res?.data?.message);
-        }
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     if (isEditData?.uuid) {
-      setValue("name", isEditData?.name);
-      setValue("designation", isEditData?.designation);
-      // setValue("image" , isEditData?.image)
+      reset({
+        name: isEditData?.name || "",
+        designation: isEditData?.designation || "",
+        image: isEditData?.image || null,
+      });
+      setSelectedImgPreview(
+        `${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${isEditData?.image}`
+      );
+    } else {
+      reset();
+      setSelectedImgPreview("");
     }
-  }, [isEditData?.uuid]);
+  }, [isEditData, reset]);
 
   return (
     <form className="bg-white py-4 px-[30px]" onSubmit={handleSubmit(onSubmit)}>
@@ -193,7 +190,6 @@ const AddTeamForm = ({ setOpen, handleGetTeam, isEditData }: any) => {
                       <input
                         type="file"
                         accept="image/*"
-                        {...field}
                         onChange={(event) => {
                           field.onChange(event); // Update react-hook-form's state
                           handleFileChnage(event); // Call your custom handler

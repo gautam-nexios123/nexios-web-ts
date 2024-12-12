@@ -54,6 +54,7 @@ const Footer = () => {
             <NavItem path={"/about-us"}>About Us</NavItem>
             <NavItem path={"/portfolio"}>Portfolio</NavItem>
             <NavItem path={"/career"}>Careers</NavItem>
+            <NavItem path={"/blog"}>Blog</NavItem>
             <NavItem path={"/contact-us"}>Contact Us</NavItem>
           </div>
           <div className="">
@@ -76,6 +77,11 @@ const Footer = () => {
               <Image src={locationImg} alt="location" className="mt-1" />
               707, Silver Trade Center, near Oxygen Park, Digital Valley
               (Uttran), Surat, Gujarat 394105
+            </div>
+            <div className="font-MuseoSans flex items-start gap-2 font-light text-[17px] text-[#9BA9B4] pb-4">
+              <Image src={locationImg} alt="location" className="mt-1" />
+              107-108, Royal Square, VIP Cir, near Petrol Pump, Uttran, Surat,
+              Gujarat 394105
             </div>
             <div className="font-MuseoSans flex items-center hover:text-[#399EFD] cursor-pointer gap-2 font-light text-[16px] text-[#9BA9B4] pb-4">
               <Image src={phoneImg} alt="phoneImg" />

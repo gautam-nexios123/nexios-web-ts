@@ -1,14 +1,13 @@
 "use client";
-import { Button, Divider } from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react";
-import FullScreenModel from "./FullScreenModel";
-import NoDataFound from "@/common/noDataFound";
-import axios from "axios";
+import DeleteModelBody from "@/common/DeleteModelBody";
+import DialogueComp from "@/components/Admin/DialogueComp";
+import axiosInstance from "@/service/axiosInstance";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import axiosInstance from "@/service/axiosInstance";
-import DialogueComp from "@/components/Admin/DialogueComp";
-import DeleteModelBody from "@/common/DeleteModelBody";
+import { Button, CircularProgress } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import FullScreenModel from "./FullScreenModel";
 
 const BlogPage = () => {
   const [open, setOpen] = useState(false);
@@ -73,63 +72,72 @@ const BlogPage = () => {
             fontSize: { xs: "12px", sm: "13px" },
           }}
           onClick={() => {
+            setIsEditData({});
             setOpen(true);
           }}
         >
           Add Blog
         </Button>
       </div>
-      <div className="blog-body my-[30px]">
+      <div className="my-[30px]">
         {blogHtmlData?.length > 0 ? (
           blogHtmlData?.map((cont: any, index: number) => {
             return (
-              <div className="mb-[25px]" key={index}>
-                <div className="flex justify-between">
-                  <div className="flex items-start gap-[20px]">
-                    <div className="text-black font-semibold text-[20px]">
-                      {index + 1}.
-                    </div>
-                    <div className="text-black font-semibold text-[20px]">
+              <div
+                key={index}
+                className="relative w-full lg:max-w-[80%] mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 mb-[25px]"
+              >
+                <div className="flex flex-col-reverse md:flex-row justify-between w-full">
+                  {/* Text Section */}
+                  <div className="w-full md:w-[70%] p-6">
+                    <h1 className="text-lg md:text-xl font-bold text-gray-800 mb-[15px]">
                       {cont?.title}
-                    </div>
+                    </h1>
+                    <p className="text-sm text-gray-700 mb-[15px]">
+                      {cont?.description}
+                    </p>
                     <div
-                      className=""
+                      className="blog-body line-clamp-1"
                       dangerouslySetInnerHTML={{ __html: cont?.html }}
                     />
                   </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "10px",
-                    }}
-                  >
-                    <div
-                      onClick={() => {
-                        setOpen(true);
-                        setIsEditData(cont);
-                      }}
-                    >
-                      <EditIcon className="cursor-pointer text-blue-800" />
-                    </div>
-                    <div
-                      onClick={() => {
-                        setDelID(cont?.uuid);
-                        setDelMolOpen(true);
-                      }}
-                      className=""
-                    >
-                      <DeleteIcon className="cursor-pointer text-red-500" />
-                    </div>
+                  {/* Image Section */}
+                  <div className="w-full md:w-[30%]">
+                    <img
+                      src={`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${cont?.image}`}
+                      alt="Rescue Operation"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
-                <Divider className="!text-black h-2" />
+
+                <div className="absolute top-0 right-[6px]">
+                  <div
+                    onClick={() => {
+                      setOpen(true);
+                      setIsEditData(cont);
+                    }}
+                    className="w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center mb-[12px]"
+                  >
+                    <EditIcon className="cursor-pointer text-blue-800" />
+                  </div>
+                  <div
+                    onClick={() => {
+                      setDelID(cont?.uuid);
+                      setDelMolOpen(true);
+                    }}
+                    className="w-[30px] h-[30px] bg-white rounded-full flex items-center justify-center"
+                  >
+                    <DeleteIcon className="cursor-pointer text-red-500" />
+                  </div>
+                </div>
               </div>
             );
           })
         ) : (
-          <NoDataFound loading={loading} />
+          <div className="w-full text-center py-[100px]">
+            {loading ? <CircularProgress /> : "No data found"}
+          </div>
         )}
       </div>
       <div>

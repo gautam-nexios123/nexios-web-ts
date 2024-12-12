@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 
 const AddClientReviewForm = ({ setOpen, handleGetClient, isEditData }: any) => {
-  const [selectedImg, setSelectedImg] = useState<any>("");
   const [selectedImgPreview, setSelectedImgPreview] = useState<string | null>(
-    null
+    ""
   );
   const [loading, setLoading] = useState<boolean>(false);
 
   const {
     handleSubmit,
     control,
+    reset,
     setValue,
     formState: { errors },
   } = useForm({
@@ -21,85 +21,76 @@ const AddClientReviewForm = ({ setOpen, handleGetClient, isEditData }: any) => {
       name: "",
       designation: "",
       description: "",
-      image: "",
+      image: null,
     },
   });
 
   const handleFileChnage = (event: any) => {
     const file = event.target.files[0];
     if (file) {
-      setSelectedImg(file); // Store the file
+      setValue("image", file); // Store the file
       const reader = new FileReader();
       reader.onload = () => {
         setSelectedImgPreview(reader.result as string); // Set preview URL
       };
       reader.readAsDataURL(file);
     } else {
-      setSelectedImg(null);
-      setSelectedImgPreview(null);
+      setValue("image", null);
+      setSelectedImgPreview("");
     }
   };
 
   const removeImage = () => {
-    setSelectedImg(null);
-    setSelectedImgPreview(null);
-    setValue("image", "");
+    setSelectedImgPreview("");
+    setValue("image", null);
   };
 
   const onSubmit = async (data: any) => {
-    // const payload = {
-    //   ...data,
-    //   image: selectedImg,
-    // };
-    if (isEditData?.uuid) {
-      setLoading(true);
-      try {
-        const res = await axiosInstance.put(
-          `${process.env.NEXT_PUBLIC_API_BASEURL}/client?id=${isEditData?.uuid}`,
-          data
-        );
-        if (res?.data?.status === 200) {
-          setLoading(false);
-          handleGetClient();
-          setOpen(false);
-        } else {
-          console.log(res?.data?.message);
-        }
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
+    const formData = new FormData();
+    typeof data?.image !== "string" && formData.append("image", data?.image);
+    formData.append("name", data?.name);
+    formData.append("designation", data?.designation);
+    formData.append("description", data?.description);
+
+    try {
+      const res = isEditData?.uuid
+        ? await axiosInstance.put(
+            `${process.env.NEXT_PUBLIC_API_BASEURL}/client?id=${isEditData.uuid}`,
+            formData
+          )
+        : await axiosInstance.post(
+            `${process.env.NEXT_PUBLIC_API_BASEURL}/client`,
+            formData
+          );
+
+      if (res?.data?.status === 200 || res?.data?.status === 201) {
+        handleGetClient();
+        reset();
+        setOpen(false);
+      } else {
+        console.log(res?.data?.message);
       }
-    } else {
-      setLoading(true);
-      try {
-        const res = await axiosInstance.post(
-          `${process.env.NEXT_PUBLIC_API_BASEURL}/client`,
-          data
-        );
-        if (res?.data?.status === 201) {
-          setLoading(false);
-          handleGetClient();
-          setOpen(false);
-        } else {
-          console.log(res?.data?.message);
-        }
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+    } catch (err) {
+      console.error(err);
     }
   };
 
   useEffect(() => {
     if (isEditData?.uuid) {
-      setValue("name", isEditData?.name);
-      setValue("designation", isEditData?.designation);
-      setValue("description", isEditData?.description);
-      // setValue("image" , isEditData?.image)
+      reset({
+        name: isEditData?.name || "",
+        designation: isEditData?.designation || "",
+        description: isEditData?.description || "",
+        image: isEditData?.image || null,
+      });
+      setSelectedImgPreview(
+        `${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${isEditData?.image}`
+      );
+    } else {
+      reset();
+      setSelectedImgPreview("");
     }
-  }, [isEditData?.uuid]);
+  }, [isEditData, reset]);
 
   return (
     <form className="bg-white py-4 px-[30px]" onSubmit={handleSubmit(onSubmit)}>
@@ -224,7 +215,7 @@ const AddClientReviewForm = ({ setOpen, handleGetClient, isEditData }: any) => {
                       <input
                         type="file"
                         accept="image/*"
-                        {...field}
+                        // {...field}
                         onChange={(event) => {
                           field.onChange(event); // Update react-hook-form's state
                           handleFileChnage(event); // Call your custom handler
