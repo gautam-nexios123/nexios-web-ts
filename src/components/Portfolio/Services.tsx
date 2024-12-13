@@ -38,7 +38,7 @@ const Services = () => {
   const handleGetServicesData = async () => {
     if (apiCalled.current) return; // Prevent duplicate calls
     apiCalled.current = true;
-    
+
     setLoading(true);
     await axios
       .get(`${process.env.NEXT_PUBLIC_API_BASEURL}/portfolio?showAll=${true}`)
@@ -95,7 +95,9 @@ const ServicesContent: React.FC<ServicesContentProps> = ({
   return (
     <div
       key={index}
-      className="w-[100%] h-full mx-auto flex flex-col md:flex-row lg:flex-row items-center"
+      className={`w-[100%] h-full mx-auto flex ${
+        index % 2 === 0 ? "flex-col" : "flex-col-reverse"
+      } md:flex-row lg:flex-row items-center max-sm:mb-[25px] bg-white max-sm:shadow-xl  max-sm:p-2 `}
     >
       {index % 2 === 0 ? (
         <>

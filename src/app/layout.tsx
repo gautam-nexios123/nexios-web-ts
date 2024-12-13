@@ -1,13 +1,12 @@
 "use client";
 // import type { Metadata } from "next";
-import "./globals.css";
-import Script from "next/script";
 import { usePathname } from "next/navigation";
+import "./globals.css";
 // import { useEffect } from "react";
 // import ReactGA from "react-ga";
-import { pathDescriptions } from "@/utils";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import { pathDescriptions } from "@/utils";
 
 // ReactGA.initialize("G-YESDGWM45W");
 

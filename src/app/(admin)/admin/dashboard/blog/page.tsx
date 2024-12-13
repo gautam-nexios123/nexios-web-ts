@@ -102,7 +102,7 @@ const BlogPage = () => {
                     />
                   </div>
                   {/* Image Section */}
-                  <div className="w-full md:w-[30%]">
+                  <div className="w-full md:w-[30%] h-[230px]">
                     <img
                       src={`${process.env.NEXT_PUBLIC_API_BASEURL_IMAGE}/${cont?.image}`}
                       alt="Rescue Operation"

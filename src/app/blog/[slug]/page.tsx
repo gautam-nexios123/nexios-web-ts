@@ -16,8 +16,8 @@ const BlogDetail = async ({ params, searchParams }: any) => {
   return (
     <div className="main-container px-[40px] my-[30px]">
       <CustomHead
-        heading={blogData[0]?.title}
-        desc={blogData[0]?.description}
+        heading={blogData?.title}
+        desc={blogData?.description}
       />
       <div className="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 mb-[25px]">
         <div className="w-full">

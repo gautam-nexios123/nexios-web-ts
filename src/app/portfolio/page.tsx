@@ -17,8 +17,13 @@ const Portfolio = () => {
 
       <div className="relative w-full">
         <div className="main-container px-[40px] xl:px-[20px] md:flex md:gap-16 lg:gap-24 w-full py-[60px] my-6">
-          <div className="font-MuseoSans text-[36px] sm:text-[46px] text-[#121212] font-semibold pb-3 md:pb-0">
-            Our,Successful client products
+          <div>
+            <div className="font-MuseoSans text-[36px] sm:text-[46px] text-[#121212] font-semibold pb-3 md:pb-0 whitespace-nowrap leading-none">
+              Our, Successful
+            </div>
+            <div className="font-MuseoSans text-[36px] sm:text-[46px] text-[#121212] font-semibold pb-3 md:pb-0 whitespace-nowrap">
+              client products
+            </div>
           </div>
           <div className="font-MuseoSans text-[16px] sm:text-[19px] text-[#9BA9B4] font-light text-justify">
             nexios Technologies is one of the reckoned Software Development
