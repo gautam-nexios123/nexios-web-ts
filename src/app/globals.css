@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .main-container {
-  max-width: 1140px;
+  max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -170,29 +170,47 @@ body {
   font-size: 28px !important;
 }
 
-.blog-body a{
- color: #1976d2 !important;
- text-decoration: underline !important;
+.blog-body a {
+  color: #1976d2 !important;
+  text-decoration: underline !important;
 }
 
-.blog-body ul{
- list-style-type: disc;
- margin-left: 50px;
- }
+.blog-body ul {
+  list-style-type: disc;
+  margin-left: 50px;
+}
 
- .blog-body ol{
+.blog-body ol {
   list-style-type: decimal;
   margin-left: 50px;
-  }
+}
 
-  .ql-align-center{
-    text-align: center;
-  }
+.ql-align-center {
+  text-align: center;
+}
 
-  .ql-align-right{
-    text-align: right;
-  }
+.ql-align-right {
+  text-align: right;
+}
 
-  .ql-align-justify{
-    text-align: justify;
-  }
+.ql-align-justify {
+  text-align: justify;
+}
+
+.contact-us-bg {
+  background-image: url("../assets/images/contact-us/bg-3-contact.png");
+  background-size: cover;
+  background-position: center;
+}
+.topBanner-bg {
+  background-image: url("../assets/images/top-bg.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat; 
+}
+.top-service-Banner-bg {
+  background-image: url("../assets/images/top-bg-service.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat; 
+}
